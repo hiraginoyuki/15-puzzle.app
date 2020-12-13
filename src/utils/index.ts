@@ -1,2 +1,5 @@
-export { range } from './range';
-export { N2m1Puzzle } from './n2m1-puzzle';
+export * from './array';
+export * from './log';
+export * from './range';
+export * as Mapper from "./mapper";
+export * from './mapper';
