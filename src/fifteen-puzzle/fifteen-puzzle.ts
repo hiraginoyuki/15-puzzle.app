@@ -34,6 +34,7 @@ export class FifteenPuzzle {
   }
 
   get length() { return this.numbers.length; }
+  getNumbers() { return this.numbers.slice(); }
 
   clone() { return new (this.constructor as typeof FifteenPuzzle)([this.rows, this.columns], this.numbers.slice()); }
   equals(point1: Point2D, point2: Point2D) { return point1[0] === point2[0] && point1[1] === point2[1]; }
