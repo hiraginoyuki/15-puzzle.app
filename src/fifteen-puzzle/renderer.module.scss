@@ -1,4 +1,30 @@
 .fifteenPuzzleRenderer {
-  --columns: attr(data-columns);
-  --rows: attr(data-rows);
+  user-select: none;
+  width: calc(80px * var(--columns));
+  height: calc(80px * var(--rows));
+
+  > .piece {
+    display: flex;
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    margin: 2px;
+    left: calc(80px * var(--x));
+    top: calc(80px * var(--y));
+    border-radius: 5px;
+    background-color: #111;
+    font-weight: 900;
+    filter: invert(0%);
+    transition: .1s left var(--easeOutCirc)
+              , .1s top var(--easeOutCirc)
+              , .3s filter var(--easeOutCirc);
+    &.zero { opacity: 0; }
+    &.isWhereItShouldBe {
+      filter: invert(100%);
+    }
+    > .number {
+      margin: auto;
+      font-size: 28pt;
+    }
+  }
 }
