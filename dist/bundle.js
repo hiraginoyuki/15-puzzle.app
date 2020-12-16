@@ -29230,6 +29230,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
 /* harmony import */ var _renderer_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.module.scss */ "./src/fifteen-puzzle/renderer.module.scss");
 /* harmony import */ var _renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 
 
 
@@ -29239,10 +29250,11 @@ function FifteenPuzzleRenderer(props) {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().fifteenPuzzleRenderer), style: { "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("style", null, "\n        .flex-container {\n          width: 100%;\n          height: 100%;\n          justify-content: center;\n        }\n        .flex-container > div {\n          margin: auto auto;\n        }\n      "),
         (0,_utils__WEBPACK_IMPORTED_MODULE_1__.range)(numbers.length).map(function (number) {
+            var _a;
             var point = props.puzzle.getPoint(number);
             var index = props.puzzle.toIndex(point);
             var onTap = function () { return (props.puzzle.tap(point), console.log("tapped", point), forceUpdate()); };
-            return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.joinClassNames)((_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().piece), number === index + 1 && (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().isWhereItShouldBe), number === 0 && (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().zero)), style: { "--x": point[0], "--y": point[1] }, key: number, onTouchStart: onTap, onMouseDown: onTap },
+            return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", __assign({ className: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.joinClassNames)((_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().piece), number === index + 1 && (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().isWhereItShouldBe), number === 0 && (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().zero)), style: { "--x": point[0], "--y": point[1] }, key: number }, (_a = {}, _a[_utils__WEBPACK_IMPORTED_MODULE_1__.isMobile ? "onTouchStart" : "onMouseDown"] = onTap, _a)),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().number) },
                     " ",
                     number,
@@ -29360,22 +29372,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "chooseRandom": () => /* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_0__.chooseRandom,
 /* harmony export */   "chooseRandomIndex": () => /* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_0__.chooseRandomIndex,
-/* harmony export */   "FlexCenteringContainer": () => /* reexport safe */ _flex_centering_container__WEBPACK_IMPORTED_MODULE_1__.FlexCenteringContainer,
-/* harmony export */   "joinClassNames": () => /* reexport safe */ _join_class_names__WEBPACK_IMPORTED_MODULE_2__.joinClassNames,
-/* harmony export */   "log": () => /* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_3__.log,
-/* harmony export */   "range": () => /* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_4__.range,
-/* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_5__,
-/* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_5__.flip,
-/* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_5__.pass,
-/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_6__.useForceUpdate
+/* harmony export */   "isMobile": () => /* reexport safe */ _is_mobile__WEBPACK_IMPORTED_MODULE_1__.isMobile,
+/* harmony export */   "FlexCenteringContainer": () => /* reexport safe */ _flex_centering_container__WEBPACK_IMPORTED_MODULE_2__.FlexCenteringContainer,
+/* harmony export */   "joinClassNames": () => /* reexport safe */ _join_class_names__WEBPACK_IMPORTED_MODULE_3__.joinClassNames,
+/* harmony export */   "log": () => /* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_4__.log,
+/* harmony export */   "range": () => /* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_5__.range,
+/* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_6__,
+/* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_6__.flip,
+/* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_6__.pass,
+/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_7__.useForceUpdate
 /* harmony export */ });
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array */ "./src/utils/array.ts");
-/* harmony import */ var _flex_centering_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./flex-centering-container */ "./src/utils/flex-centering-container/index.ts");
-/* harmony import */ var _join_class_names__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./join-class-names */ "./src/utils/join-class-names.ts");
-/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
-/* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
-/* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
-/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
+/* harmony import */ var _is_mobile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./is-mobile */ "./src/utils/is-mobile.ts");
+/* harmony import */ var _flex_centering_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./flex-centering-container */ "./src/utils/flex-centering-container/index.ts");
+/* harmony import */ var _join_class_names__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./join-class-names */ "./src/utils/join-class-names.ts");
+/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
+/* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
+/* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
+/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
 
 
 
@@ -29385,6 +29399,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+/***/ }),
+
+/***/ "./src/utils/is-mobile.ts":
+/*!********************************!*
+  !*** ./src/utils/is-mobile.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isMobile": () => /* binding */ isMobile
+/* harmony export */ });
+var isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase());
 
 
 /***/ }),
