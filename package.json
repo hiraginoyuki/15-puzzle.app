@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "run-p start:*",
-    "start:devtools": "npx react-devtools",
-    "start:electron": "npx electron .",
-    "start:webpack": "npx webpack -w",
-    "deploy": "npx webpack & gh-pages -d . -a -s dist/bundle.js"
+    "start:devtools": "react-devtools",
+    "start:electron": "electron .",
+    "start:webpack": "webpack -w",
+    "deploy": "webpack & gh-pages -d . -a -s dist/bundle.js"
   },
   "author": "",
   "license": "ISC",
