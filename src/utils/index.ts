@@ -1,4 +1,6 @@
 export * from './array';
+export * from './flex-centering-container';
+export * from './join-class-names';
 export * from './log';
 export * from './range';
 export * as Mapper from "./mapper";
