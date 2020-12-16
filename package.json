@@ -8,7 +8,8 @@
     "start:devtools": "react-devtools",
     "start:electron": "electron .",
     "start:webpack": "webpack -w",
-    "deploy": "webpack & gh-pages -d . -a -s dist/bundle.js"
+    "only-deploy": "gh-pages -d . -a -s dist/bundle.js",
+    "deploy": "webpack & npm run only-deploy"
   },
   "author": "",
   "license": "ISC",
