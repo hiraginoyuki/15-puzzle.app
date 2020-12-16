@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { FifteenPuzzle } from './fifteen-puzzle';
-import { useForceUpdate, joinClassNames, range } from '../utils';
+import { useForceUpdate, joinClassNames, range, isMobile } from '../utils';
 import styles from './renderer.module.scss';
 
 export interface FifteenPuzzleRendererProps {
@@ -31,8 +31,7 @@ export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
         return <div className={joinClassNames(styles.piece, number === index + 1 && styles.isWhereItShouldBe, number === 0 && styles.zero)}
                     style={{ "--x": point[0], "--y": point[1] } as CSSProperties}
                     key={number}
-                    onTouchStart={onTap}
-                    onMouseDown={onTap}>
+                    {{ [isMobile ? "onTouchStart" : "onMouseDown"]: onTap }}>
           <div className={styles.number}> {number} </div>
         </div>;
       }) }

@@ -1,4 +1,5 @@
 export * from './array';
+export * from './is-mobile';
 export * from './flex-centering-container';
 export * from './join-class-names';
 export * from './log';
