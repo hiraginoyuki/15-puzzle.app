@@ -15,7 +15,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(sc|c)ss$/,
+        test: /(?<!\.module)\.(sc|c)ss$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            }
+          },
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.module\.(sc|c)ss$/,
         exclude: /node_modules/,
         use: [
           'style-loader',
