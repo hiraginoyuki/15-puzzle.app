@@ -15,13 +15,13 @@
   "license": "ISC",
   "dependencies": {
     "@types/electron": "^1.6.10",
-    "@types/react": "^16.9.45",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@types/react-transition-group": "^4.4.0",
     "electron": "^9.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-transition-group": "^4.4.1"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-transition-group": "^4.4.0"
   },
   "devDependencies": {
     "babel-loader": "^8.1.0",
@@ -29,7 +29,7 @@
     "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
-    "react-devtools": "^4.9.0",
+    "react-devtools": "^4.10.1",
     "sass-loader": "^9.0.3",
     "scss-loader": "0.0.1",
     "style-loader": "^1.2.1",
