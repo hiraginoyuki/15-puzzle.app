@@ -12,18 +12,6 @@ export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
   return (
     <div className={styles.fifteenPuzzleRenderer}
          style={{ "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } as CSSProperties}>
-      <style>
-      {`
-        .flex-container {
-          width: 100%;
-          height: 100%;
-          justify-content: center;
-        }
-        .flex-container > div {
-          margin: auto auto;
-        }
-      `}
-      </style>
       { range(numbers.length).map((number) => {
         const point = props.puzzle.getPointFromValue(number);
         const index = props.puzzle.convertToIndex(point);
