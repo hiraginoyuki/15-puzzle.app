@@ -3,6 +3,8 @@ import { FifteenPuzzle } from './fifteen-puzzle';
 import { useForceUpdate, joinClassNames, range, isMobile } from '../utils';
 import styles from './renderer.module.scss';
 
+const EVENT = isMobile ? "onTouchStart" : "onMouseDown";
+
 export interface FifteenPuzzleRendererProps {
   puzzle: FifteenPuzzle;
 }
@@ -19,7 +21,7 @@ export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
         return <div className={joinClassNames(styles.piece, number === index + 1 && styles.isWhereItShouldBe, number === 0 && styles.zero)}
                     style={{ "--x": point[0], "--y": point[1] } as CSSProperties}
                     key={number}
-                    {...{ [isMobile ? "onTouchStart" : "onMouseDown"]: onTap }}>
+                    {...{ [EVENT]: onTap }}>
           <div className={styles.number}> {number} </div>
         </div>;
       }) }
