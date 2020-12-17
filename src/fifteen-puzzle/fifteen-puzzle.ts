@@ -38,11 +38,11 @@ export class FifteenPuzzle {
 
   clone() { return new (this.constructor as typeof FifteenPuzzle)([this.rows, this.columns], this.numbers.slice()); }
   equals(point1: Point2D, point2: Point2D) { return point1[0] === point2[0] && point1[1] === point2[1]; }
-  convertToIndex(point: Point2D) { return point[0] + point[1] * this.columns; }
-  convertToPoint(index: number): Point2D { return [index % this.columns, floor(index / this.columns)]; }
-  setValueOfPoint(point: Point2D, value: number) { this.numbers[this.convertToIndex(point)] = value; return this; }
-  getValueFromPoint(point: Point2D) { return this.numbers[this.convertToIndex(point)]; }
-  getPointFromValue(value: number) { return this.convertToPoint(this.numbers.findIndex(i => i === value)); }
+  convertPointToIndex(point: Point2D) { return point[0] + point[1] * this.columns; }
+  convertIndexToPoint(index: number): Point2D { return [index % this.columns, floor(index / this.columns)]; }
+  setValueOfPoint(point: Point2D, value: number) { this.numbers[this.convertPointToIndex(point)] = value; return this; }
+  getValueFromPoint(point: Point2D) { return this.numbers[this.convertPointToIndex(point)]; }
+  getPointFromValue(value: number) { return this.convertIndexToPoint(this.numbers.findIndex(i => i === value)); }
   getEmptyPoint() { return this.getPointFromValue(0); }
 
   isCorrect() {
@@ -57,8 +57,8 @@ export class FifteenPuzzle {
     }
     const swapCount = range(cloned.columns * cloned.rows - 1).reduce((acc, i) => {
       const j = cloned.getPointFromValue(i + 1);
-      if (i !== cloned.convertToIndex(j)) {
-        cloned.swap(cloned.convertToPoint(i), j);
+      if (i !== cloned.convertPointToIndex(j)) {
+        cloned.swap(cloned.convertIndexToPoint(i), j);
         return acc + 1;
       } else return acc;
     });
