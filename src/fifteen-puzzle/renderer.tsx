@@ -25,8 +25,8 @@ export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
       `}
       </style>
       { range(numbers.length).map((number) => {
-        const point = props.puzzle.getPoint(number);
-        const index = props.puzzle.toIndex(point);
+        const point = props.puzzle.getPointFromValue(number);
+        const index = props.puzzle.convertToIndex(point);
         const onTap = () => (props.puzzle.tap(point), console.log("tapped", point), forceUpdate());
         return <div className={joinClassNames(styles.piece, number === index + 1 && styles.isWhereItShouldBe, number === 0 && styles.zero)}
                     style={{ "--x": point[0], "--y": point[1] } as CSSProperties}
