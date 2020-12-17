@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FifteenPuzzle } from "./fifteen-puzzle";
-import { FlexCenteringContainer } from "./utils";
+import { FlexCenteringContainer, defineOnGlobal } from "./utils";
 
-const puzzle = FifteenPuzzle.generateRandom(4);
-Object.defineProperties(window, {
-  FifteenPuzzle: { value: FifteenPuzzle },
-  puzzle: { value: puzzle }
-});
-
+defineOnGlobal({ FifteenPuzzle });
 export function App() {
+  const [ puzzle ] = useState(FifteenPuzzle.generateRandom(4));
+  useEffect(() => defineOnGlobal({ puzzle }));
+
   return <>
     <FlexCenteringContainer>
       <FifteenPuzzle.Renderer puzzle={puzzle} />
