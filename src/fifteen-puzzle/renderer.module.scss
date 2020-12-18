@@ -4,20 +4,21 @@
   height: calc(80px * var(--rows));
 
   > .piece {
+    --width: 80px;
+    --height: 80px;
+
     display: flex;
     position: absolute;
     width: 76px;
     height: 76px;
     margin: 2px;
-    left: calc(80px * var(--x));
-    top: calc(80px * var(--y));
+    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );
     border-radius: 5px;
     background-color: #111;
     font-weight: 900;
     filter: invert(0%);
-    transition: .1s left var(--easeOutCirc)
-              , .1s top var(--easeOutCirc)
-              , .3s filter var(--easeOutCirc);
+    transition: .1s transform var(--easeOutCirc)
+              , .2s filter var(--easeOutCirc);
     &.zero { opacity: 0; }
     &.isWhereItShouldBe {
       filter: invert(100%);
