@@ -2,7 +2,7 @@
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss":
-/*!*********************************************************************************************************************************!*
+/*!*********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*********************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
@@ -27,7 +27,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  width: 100vw;\
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.module.scss":
-/*!**********************************************************************************************************************************************************!*
+/*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.module.scss ***!
   \**********************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
@@ -58,7 +58,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.module.scss":
-/*!***********************************************************************************************************************************************************************!*
+/*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.module.scss ***!
   \***********************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
@@ -85,7 +85,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
-/*!*****************************************************!*
+/*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
   \*****************************************************/
 /***/ ((module) => {
@@ -189,7 +189,7 @@ function toComment(sourceMap) {
 /***/ }),
 
 /***/ "./node_modules/object-assign/index.js":
-/*!*********************************************!*
+/*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
   \*********************************************/
 /***/ ((module) => {
@@ -290,7 +290,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ }),
 
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
-/*!*************************************************************!*
+/*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
@@ -26558,7 +26558,7 @@ exports.version = ReactVersion;
 /***/ }),
 
 /***/ "./node_modules/react-dom/index.js":
-/*!*****************************************!*
+/*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -26602,7 +26602,7 @@ if (false) {} else {
 /***/ }),
 
 /***/ "./node_modules/react/cjs/react.development.js":
-/*!*****************************************************!*
+/*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
@@ -28946,7 +28946,7 @@ exports.version = ReactVersion;
 /***/ }),
 
 /***/ "./node_modules/react/index.js":
-/*!*************************************!*
+/*!*************************************!*\
   !*** ./node_modules/react/index.js ***!
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -28962,7 +28962,7 @@ if (false) {} else {
 /***/ }),
 
 /***/ "./node_modules/scheduler/cjs/scheduler-tracing.development.js":
-/*!*********************************************************************!*
+/*!*********************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
   \*********************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
@@ -29320,7 +29320,7 @@ exports.unstable_wrap = unstable_wrap;
 /***/ }),
 
 /***/ "./node_modules/scheduler/cjs/scheduler.development.js":
-/*!*************************************************************!*
+/*!*************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
@@ -30175,7 +30175,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 /***/ }),
 
 /***/ "./node_modules/scheduler/index.js":
-/*!*****************************************!*
+/*!*****************************************!*\
   !*** ./node_modules/scheduler/index.js ***!
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -30191,7 +30191,7 @@ if (false) {} else {
 /***/ }),
 
 /***/ "./node_modules/scheduler/tracing.js":
-/*!*******************************************!*
+/*!*******************************************!*\
   !*** ./node_modules/scheduler/tracing.js ***!
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -30207,7 +30207,7 @@ if (false) {} else {
 /***/ }),
 
 /***/ "./src/index.scss":
-/*!************************!*
+/*!************************!*\
   !*** ./src/index.scss ***!
   \************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -30235,7 +30235,7 @@ module.exports = content.locals || {};
 /***/ }),
 
 /***/ "./src/fifteen-puzzle/renderer.module.scss":
-/*!*************************************************!*
+/*!*************************************************!*\
   !*** ./src/fifteen-puzzle/renderer.module.scss ***!
   \*************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -30263,7 +30263,7 @@ module.exports = content.locals || {};
 /***/ }),
 
 /***/ "./src/utils/flex-centering-container/style.module.scss":
-/*!**************************************************************!*
+/*!**************************************************************!*\
   !*** ./src/utils/flex-centering-container/style.module.scss ***!
   \**************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -30291,7 +30291,7 @@ module.exports = content.locals || {};
 /***/ }),
 
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
-/*!****************************************************************************!*
+/*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
   \****************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
@@ -30570,7 +30570,7 @@ module.exports = function (list, options) {
 /***/ }),
 
 /***/ "./src/app.tsx":
-/*!*********************!*
+/*!*********************!*\
   !*** ./src/app.tsx ***!
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30599,7 +30599,7 @@ function App() {
 /***/ }),
 
 /***/ "./src/fifteen-puzzle/fifteen-puzzle.ts":
-/*!**********************************************!*
+/*!**********************************************!*\
   !*** ./src/fifteen-puzzle/fifteen-puzzle.ts ***!
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30712,7 +30712,7 @@ var FifteenPuzzle = /** @class */ (function () {
 /***/ }),
 
 /***/ "./src/fifteen-puzzle/index.ts":
-/*!*************************************!*
+/*!*************************************!*\
   !*** ./src/fifteen-puzzle/index.ts ***!
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30729,7 +30729,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ "./src/fifteen-puzzle/renderer.tsx":
-/*!*****************************************!*
+/*!*****************************************!*\
   !*** ./src/fifteen-puzzle/renderer.tsx ***!
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30778,7 +30778,7 @@ function FifteenPuzzleRenderer(props) {
 /***/ }),
 
 /***/ "./src/index.tsx":
-/*!***********************!*
+/*!***********************!*\
   !*** ./src/index.tsx ***!
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30790,17 +30790,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app */ "./src/app.tsx");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/utils/index.ts");
+
 
 
 
 
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_app__WEBPACK_IMPORTED_MODULE_2__.App, null), document.getElementById("app"));
+_utils__WEBPACK_IMPORTED_MODULE_4__.serviceWorker.register();
 
 
 /***/ }),
 
 /***/ "./src/utils/array.ts":
-/*!****************************!*
+/*!****************************!*\
   !*** ./src/utils/array.ts ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30818,7 +30821,7 @@ var chooseRandom = function (array) { return array[chooseRandomIndex(array)]; };
 /***/ }),
 
 /***/ "./src/utils/define-on-global.ts":
-/*!***************************************!*
+/*!***************************************!*\
   !*** ./src/utils/define-on-global.ts ***!
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30847,7 +30850,7 @@ function defineOnGlobal(o) {
 /***/ }),
 
 /***/ "./src/utils/flex-centering-container/flex-centering-container.tsx":
-/*!*************************************************************************!*
+/*!*************************************************************************!*\
   !*** ./src/utils/flex-centering-container/flex-centering-container.tsx ***!
   \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30886,7 +30889,7 @@ function FlexCenteringContainer(props) {
 /***/ }),
 
 /***/ "./src/utils/flex-centering-container/index.ts":
-/*!*****************************************************!*
+/*!*****************************************************!*\
   !*** ./src/utils/flex-centering-container/index.ts ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30903,7 +30906,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ "./src/utils/index.ts":
-/*!****************************!*
+/*!****************************!*\
   !*** ./src/utils/index.ts ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30922,7 +30925,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_7__,
 /* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_7__.flip,
 /* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_7__.pass,
-/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_8__.useForceUpdate
+/* harmony export */   "serviceWorker": () => /* reexport module object */ _service_worker__WEBPACK_IMPORTED_MODULE_8__,
+/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_9__.useForceUpdate
 /* harmony export */ });
 /* harmony import */ var _flex_centering_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./flex-centering-container */ "./src/utils/flex-centering-container/index.ts");
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "./src/utils/array.ts");
@@ -30932,7 +30936,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
 /* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
 /* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
-/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
+/* harmony import */ var _service_worker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./service-worker */ "./src/utils/service-worker.ts");
+/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
+
+
 
 
 
@@ -30949,7 +30956,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ "./src/utils/is-mobile.ts":
-/*!********************************!*
+/*!********************************!*\
   !*** ./src/utils/is-mobile.ts ***!
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30965,7 +30972,7 @@ var isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.
 /***/ }),
 
 /***/ "./src/utils/join-class-names.ts":
-/*!***************************************!*
+/*!***************************************!*\
   !*** ./src/utils/join-class-names.ts ***!
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -30991,7 +30998,7 @@ function joinClassNames() {
 /***/ }),
 
 /***/ "./src/utils/log.ts":
-/*!**************************!*
+/*!**************************!*\
   !*** ./src/utils/log.ts ***!
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -31007,7 +31014,7 @@ var log = function (value) { return (console.log(value), value); };
 /***/ }),
 
 /***/ "./src/utils/mapper.ts":
-/*!*****************************!*
+/*!*****************************!*\
   !*** ./src/utils/mapper.ts ***!
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -31025,7 +31032,7 @@ var pass = function (e, i, a) { return e; };
 /***/ }),
 
 /***/ "./src/utils/range.ts":
-/*!****************************!*
+/*!****************************!*\
   !*** ./src/utils/range.ts ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -31061,8 +31068,94 @@ function range() {
 
 /***/ }),
 
+/***/ "./src/utils/service-worker.ts":
+/*!*************************************!*\
+  !*** ./src/utils/service-worker.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "register": () => /* binding */ register,
+/* harmony export */   "unregister": () => /* binding */ unregister
+/* harmony export */ });
+var isLocalhost = Boolean(window.location.hostname === "localhost" ||
+    window.location.hostname === "[::1]" ||
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
+function register(config) {
+    if (false) { var publicUrl; }
+}
+function registerValidSW(swUrl, config) {
+    navigator.serviceWorker
+        .register(swUrl)
+        .then(function (registration) {
+        registration.onupdatefound = function () {
+            var installingWorker = registration.installing;
+            if (installingWorker == null) {
+                return;
+            }
+            installingWorker.onstatechange = function () {
+                if (installingWorker.state === "installed") {
+                    if (navigator.serviceWorker.controller) {
+                        console.log("New content is available and will be used when all tabs for this page are closed.");
+                        if (config && config.onUpdate) {
+                            config.onUpdate(registration);
+                        }
+                    }
+                    else {
+                        console.log("Content is cached for offline use.");
+                        if (config && config.onSuccess) {
+                            config.onSuccess(registration);
+                        }
+                    }
+                }
+            };
+        };
+    })
+        .catch(function (error) {
+        console.error("Error during service worker registration:", error);
+    });
+}
+function checkValidServiceWorker(swUrl, config) {
+    fetch(swUrl, {
+        headers: { "Service-Worker": "script" },
+    })
+        .then(function (response) {
+        var contentType = response.headers.get("content-type");
+        if (response.status === 404 ||
+            (contentType != null && contentType.indexOf("javascript") === -1)) {
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.unregister().then(function () {
+                    window.location.reload();
+                });
+            });
+        }
+        else {
+            registerValidSW(swUrl, config);
+        }
+    })
+        .catch(function () {
+        console.log("No internet connection found. App is running in offline mode.");
+    });
+}
+function unregister() {
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.ready
+            .then(function (registration) {
+            registration.unregister();
+        })
+            .catch(function (error) {
+            console.error(error.message);
+        });
+    }
+}
+
+
+/***/ }),
+
 /***/ "./src/utils/use-force-update.ts":
-/*!***************************************!*
+/*!***************************************!*\
   !*** ./src/utils/use-force-update.ts ***!
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {

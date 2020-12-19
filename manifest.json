@@ -1,0 +1,25 @@
+{
+  "name": "15-puzzle.app",
+  "short_name": "15puzzle",
+  "icons": [{
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#14213D",
+  "description": "15 puzzle",
+  "dir": "ltr",
+  "lang": "ja-jp",
+  "related_applications": [],
+  "prefer_related_applications": false
+}
