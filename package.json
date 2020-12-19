@@ -15,11 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/electron": "^1.6.10",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-transition-group": "^4.4.0",
-    "electron": "^9.1.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-transition-group": "^4.4.0"
