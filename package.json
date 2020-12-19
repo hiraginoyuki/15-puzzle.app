@@ -7,7 +7,7 @@
     "start": "webpack -w",
     "deploy": "run-s deploy:*",
     "deploy:build": "webpack",
-    "deploy:deploy": "gh-pages -d . -a -s dist/bundle.js"
+    "deploy:deploy": "gh-pages -d public"
   },
   "author": "",
   "license": "ISC",
