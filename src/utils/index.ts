@@ -7,5 +7,5 @@ export * from './log';
 export * from './range';
 export * as Mapper from "./mapper";
 export * from './mapper';
-export * from './service-worker';
+export * as serviceWorker from './service-worker';
 export * from './use-force-update';
