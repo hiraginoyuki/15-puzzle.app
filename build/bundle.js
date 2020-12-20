@@ -30588,11 +30588,12 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_utils__WEBPACK_IMPORTED_MODULE_2__.defineOnGlobal)({ FifteenPuzzle: _fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle });
 function App() {
-    var puzzle = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.generateRandom(4))[0];
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.generateRandom(4)), puzzle = _a[0], setPuzzle = _a[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () { return (0,_utils__WEBPACK_IMPORTED_MODULE_2__.defineOnGlobal)({ puzzle: puzzle }); });
     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_utils__WEBPACK_IMPORTED_MODULE_2__.FlexCenteringContainer, null,
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.Renderer, { puzzle: puzzle })));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.Renderer, { puzzle: puzzle }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { backgroundColor: "#fff", width: "100px", height: "100px" }, onClick: function () { return setPuzzle(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.generateRandom(4)); } }, "reset")));
 }
 
 
@@ -30833,19 +30834,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "defineOnGlobal": () => /* binding */ defineOnGlobal
 /* harmony export */ });
-var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
 function defineOnGlobal(o) {
-    Object.defineProperties(window, Object.assign.apply(Object, __spreadArrays([{}], Object.entries(o).map(function (_a) {
-        var _b;
+    Object.entries(o).forEach(function (_a) {
         var key = _a[0], value = _a[1];
-        return (_b = {}, _b[key] = { value: value }, _b);
-    }))));
+        if (window.hasOwnProperty(key))
+            delete window[key];
+        Object.defineProperty(window, key, { value: value, configurable: true });
+    });
 }
 
 
