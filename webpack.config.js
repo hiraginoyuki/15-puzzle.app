@@ -39,7 +39,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               url: false,
-              modules: 'local',
+              modules: {
+                mode: 'local'
+              }
             }
           },
           'sass-loader'
