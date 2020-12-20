@@ -1,5 +1,5 @@
 .fifteenPuzzleRenderer {
-  user-select: none;
+  -webkit-user-select: none;
   width: calc(80px * var(--columns));
   height: calc(80px * var(--rows));
 
