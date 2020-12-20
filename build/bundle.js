@@ -19,7 +19,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  width: 100vw;\n  height: 100vh;\n  background-color: #222;\n  color: #ccc;\n  font-family: 'Roboto', sans-serif;\n  overflow: hidden; }\n  body > #app {\n    width: 100%;\n    height: 100%; }\n\n:root {\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1); }\n", "",{"version":3,"sources":["webpack://src/index.scss"],"names":[],"mappings":"AAEA;EACE,SAAS;EACT,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,WAAW;EACX,iCAAiC;EAKjC,gBAAgB,EAAA;EAXlB;IAQI,WAAW;IACX,YAAY,EAAA;;AAKhB;EACE,6CAAc,EAAA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');\r\n\r\nbody {\r\n  margin: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background-color: #222;\r\n  color: #ccc;\r\n  font-family: 'Roboto', sans-serif;\r\n  > #app {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n  overflow: hidden;\r\n}\r\n\r\n:root {\r\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1);\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  width: 100vw;\n  height: 100vh;\n  overflow: hidden;\n  background-color: #222;\n  color: #ccc;\n  font-family: 'Roboto', sans-serif; }\n  body > #app {\n    width: 100%;\n    height: 100%; }\n\n:root {\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1); }\n", "",{"version":3,"sources":["webpack://src/index.scss"],"names":[],"mappings":"AAEA;EACE,SAAS;EACT,YAAY;EACZ,aAAa;EACb,gBAAgB;EAChB,sBAAsB;EACtB,WAAW;EACX,iCAAiC,EAAA;EAPnC;IASI,WAAW;IACX,YAAY,EAAA;;AAIhB;EACE,6CAAc,EAAA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');\r\n\r\nbody {\r\n  margin: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  background-color: #222;\r\n  color: #ccc;\r\n  font-family: 'Roboto', sans-serif;\r\n  > #app {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n\r\n:root {\r\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -43,7 +43,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._3ss3Gna_sKrOOExpi5jkfb {\n  user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows)); }\n  ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj {\n    --width: 80px;\n    --height: 80px;\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate(calc(var(--width) * var(--x)), calc(var(--height) * var(--y)));\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: 0.1s transform var(--easeOutCirc), 0.2s filter var(--easeOutCirc); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj.DBWx8PujQWcOtXIAqqcfg {\n      opacity: 0; }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj._2T98kYNIxD9DF0p8gO3W9l {\n      filter: invert(100%); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj > ._2ftOLU0qvnrk3TcHTG_68w {\n      margin: auto;\n      font-size: 28pt; }\n", "",{"version":3,"sources":["webpack://src/fifteen-puzzle/renderer.module.scss"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,kCAAkC;EAClC,gCAAgC,EAAA;EAHlC;IAMI,aAAQ;IACR,cAAS;IAET,aAAa;IACb,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,WAAW;IACX,mFAAqF;IACrF,kBAAkB;IAClB,sBAAsB;IACtB,gBAAgB;IAChB,kBAAkB;IAClB,6EACyC,EAAA;IApB7C;MAqBa,UAAU,EAAA;IArBvB;MAuBM,oBAAoB,EAAA;IAvB1B;MA0BM,YAAY;MACZ,eAAe,EAAA","sourcesContent":[".fifteenPuzzleRenderer {\n  user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows));\n\n  > .piece {\n    --width: 80px;\n    --height: 80px;\n\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: .1s transform var(--easeOutCirc)\n              , .2s filter var(--easeOutCirc);\n    &.zero { opacity: 0; }\n    &.isWhereItShouldBe {\n      filter: invert(100%);\n    }\n    > .number {\n      margin: auto;\n      font-size: 28pt;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._3ss3Gna_sKrOOExpi5jkfb {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows)); }\n  ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj {\n    --width: 80px;\n    --height: 80px;\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate(calc(var(--width) * var(--x)), calc(var(--height) * var(--y)));\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: 0.1s transform var(--easeOutCirc), 0.2s filter var(--easeOutCirc); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj.DBWx8PujQWcOtXIAqqcfg {\n      opacity: 0; }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj._2T98kYNIxD9DF0p8gO3W9l {\n      filter: invert(100%); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj > ._2ftOLU0qvnrk3TcHTG_68w {\n      margin: auto;\n      font-size: 28pt; }\n", "",{"version":3,"sources":["webpack://src/fifteen-puzzle/renderer.module.scss"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,kCAAkC;EAClC,gCAAgC,EAAA;EAHlC;IAMI,aAAQ;IACR,cAAS;IAET,aAAa;IACb,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,WAAW;IACX,mFAAqF;IACrF,kBAAkB;IAClB,sBAAsB;IACtB,gBAAgB;IAChB,kBAAkB;IAClB,6EACyC,EAAA;IApB7C;MAqBa,UAAU,EAAA;IArBvB;MAuBM,oBAAoB,EAAA;IAvB1B;MA0BM,YAAY;MACZ,eAAe,EAAA","sourcesContent":[".fifteenPuzzleRenderer {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows));\n\n  > .piece {\n    --width: 80px;\n    --height: 80px;\n\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: .1s transform var(--easeOutCirc)\n              , .2s filter var(--easeOutCirc);\n    &.zero { opacity: 0; }\n    &.isWhereItShouldBe {\n      filter: invert(100%);\n    }\n    > .number {\n      margin: auto;\n      font-size: 28pt;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"fifteenPuzzleRenderer": "_3ss3Gna_sKrOOExpi5jkfb",
@@ -30796,6 +30796,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+(0,_utils__WEBPACK_IMPORTED_MODULE_4__.disableScroll)();
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_app__WEBPACK_IMPORTED_MODULE_2__.App, null), document.getElementById("app"));
 _utils__WEBPACK_IMPORTED_MODULE_4__.serviceWorker.register();
 
@@ -30845,6 +30847,33 @@ function defineOnGlobal(o) {
         return (_b = {}, _b[key] = { value: value }, _b);
     }))));
 }
+
+
+/***/ }),
+
+/***/ "./src/utils/disable-scroll.ts":
+/*!*************************************!*\
+  !*** ./src/utils/disable-scroll.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "disableScroll": () => /* binding */ disableScroll,
+/* harmony export */   "enableScroll": () => /* binding */ enableScroll
+/* harmony export */ });
+//@ts-ignore
+var disabled = false;
+function onTouchMove(event) {
+    if (event.target.classList.contains("allow-scroll"))
+        event.stopPropagation();
+    else
+        event.preventDefault();
+}
+document.addEventListener("touchmove", onTouchMove, { passive: false });
+function disableScroll() { disabled = true; }
+function enableScroll() { disabled = false; }
 
 
 /***/ }),
@@ -30918,26 +30947,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "chooseRandom": () => /* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_1__.chooseRandom,
 /* harmony export */   "chooseRandomIndex": () => /* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_1__.chooseRandomIndex,
 /* harmony export */   "defineOnGlobal": () => /* reexport safe */ _define_on_global__WEBPACK_IMPORTED_MODULE_2__.defineOnGlobal,
-/* harmony export */   "isMobile": () => /* reexport safe */ _is_mobile__WEBPACK_IMPORTED_MODULE_3__.isMobile,
-/* harmony export */   "joinClassNames": () => /* reexport safe */ _join_class_names__WEBPACK_IMPORTED_MODULE_4__.joinClassNames,
-/* harmony export */   "log": () => /* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_5__.log,
-/* harmony export */   "range": () => /* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_6__.range,
-/* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_7__,
-/* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_7__.flip,
-/* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_7__.pass,
-/* harmony export */   "serviceWorker": () => /* reexport module object */ _service_worker__WEBPACK_IMPORTED_MODULE_8__,
-/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_9__.useForceUpdate
+/* harmony export */   "disableScroll": () => /* reexport safe */ _disable_scroll__WEBPACK_IMPORTED_MODULE_3__.disableScroll,
+/* harmony export */   "enableScroll": () => /* reexport safe */ _disable_scroll__WEBPACK_IMPORTED_MODULE_3__.enableScroll,
+/* harmony export */   "isMobile": () => /* reexport safe */ _is_mobile__WEBPACK_IMPORTED_MODULE_4__.isMobile,
+/* harmony export */   "joinClassNames": () => /* reexport safe */ _join_class_names__WEBPACK_IMPORTED_MODULE_5__.joinClassNames,
+/* harmony export */   "log": () => /* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_6__.log,
+/* harmony export */   "range": () => /* reexport safe */ _range__WEBPACK_IMPORTED_MODULE_7__.range,
+/* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_8__,
+/* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_8__.flip,
+/* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_8__.pass,
+/* harmony export */   "serviceWorker": () => /* reexport module object */ _service_worker__WEBPACK_IMPORTED_MODULE_9__,
+/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_10__.useForceUpdate
 /* harmony export */ });
 /* harmony import */ var _flex_centering_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./flex-centering-container */ "./src/utils/flex-centering-container/index.ts");
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "./src/utils/array.ts");
 /* harmony import */ var _define_on_global__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./define-on-global */ "./src/utils/define-on-global.ts");
-/* harmony import */ var _is_mobile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./is-mobile */ "./src/utils/is-mobile.ts");
-/* harmony import */ var _join_class_names__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./join-class-names */ "./src/utils/join-class-names.ts");
-/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
-/* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
-/* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
-/* harmony import */ var _service_worker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./service-worker */ "./src/utils/service-worker.ts");
-/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
+/* harmony import */ var _disable_scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./disable-scroll */ "./src/utils/disable-scroll.ts");
+/* harmony import */ var _is_mobile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./is-mobile */ "./src/utils/is-mobile.ts");
+/* harmony import */ var _join_class_names__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./join-class-names */ "./src/utils/join-class-names.ts");
+/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
+/* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
+/* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
+/* harmony import */ var _service_worker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./service-worker */ "./src/utils/service-worker.ts");
+/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
+
 
 
 
