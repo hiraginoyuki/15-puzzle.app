@@ -20,9 +20,7 @@
     transition: .1s transform var(--easeOutCirc)
               , .2s filter var(--easeOutCirc);
     &.zero { opacity: 0; }
-    &.isWhereItShouldBe {
-      filter: invert(100%);
-    }
+    &.correct { filter: invert(100%); }
     > .number {
       margin: auto;
       font-size: 28pt;
