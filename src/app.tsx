@@ -4,7 +4,7 @@ import { FlexCenteringContainer, defineOnGlobal } from "./utils";
 
 defineOnGlobal({ FifteenPuzzle });
 export function App() {
-  const [ puzzle ] = useState(FifteenPuzzle.generateRandom(4));
+  const [ puzzle, setPuzzle ] = useState(FifteenPuzzle.generateRandom(4));
   useEffect(() => defineOnGlobal({ puzzle }));
 
   return <>
