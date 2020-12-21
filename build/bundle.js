@@ -43,14 +43,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".fifteenPuzzleRenderer {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows)); }\n  .fifteenPuzzleRenderer > .piece {\n    --width: 80px;\n    --height: 80px;\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate(calc(var(--width) * var(--x)), calc(var(--height) * var(--y)));\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: 0.1s transform var(--easeOutCirc), 0.2s filter var(--easeOutCirc); }\n    .fifteenPuzzleRenderer > .piece.zero {\n      opacity: 0; }\n    .fifteenPuzzleRenderer > .piece.correct {\n      filter: invert(100%); }\n    .fifteenPuzzleRenderer > .piece > .number {\n      margin: auto;\n      font-size: 28pt; }\n", "",{"version":3,"sources":["webpack://src/fifteen-puzzle/renderer.module.scss"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,kCAAkC;EAClC,gCAAgC,EAAA;EAHlC;IAMI,aAAQ;IACR,cAAS;IAET,aAAa;IACb,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,WAAW;IACX,mFAAqF;IACrF,kBAAkB;IAClB,sBAAsB;IACtB,gBAAgB;IAChB,kBAAkB;IAClB,6EACyC,EAAA;IApB7C;MAqBa,UAAU,EAAA;IArBvB;MAsBgB,oBAAoB,EAAA;IAtBpC;MAwBM,YAAY;MACZ,eAAe,EAAA","sourcesContent":[".fifteenPuzzleRenderer {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows));\n\n  > .piece {\n    --width: 80px;\n    --height: 80px;\n\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: .1s transform var(--easeOutCirc)\n              , .2s filter var(--easeOutCirc);\n    &.zero { opacity: 0; }\n    &.correct { filter: invert(100%); }\n    > .number {\n      margin: auto;\n      font-size: 28pt;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._3ss3Gna_sKrOOExpi5jkfb {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows)); }\n  ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj {\n    --width: 80px;\n    --height: 80px;\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate(calc(var(--width) * var(--x)), calc(var(--height) * var(--y)));\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: 0.1s transform var(--easeOutCirc), 0.2s filter var(--easeOutCirc); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj.DBWx8PujQWcOtXIAqqcfg {\n      opacity: 0; }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj._2nsfCv9T-APNHkIXPd6w4R {\n      filter: invert(100%); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj > ._2ftOLU0qvnrk3TcHTG_68w {\n      margin: auto;\n      font-size: 28pt; }\n", "",{"version":3,"sources":["webpack://src/fifteen-puzzle/renderer.module.scss"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,kCAAkC;EAClC,gCAAgC,EAAA;EAHlC;IAMI,aAAQ;IACR,cAAS;IAET,aAAa;IACb,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,WAAW;IACX,mFAAqF;IACrF,kBAAkB;IAClB,sBAAsB;IACtB,gBAAgB;IAChB,kBAAkB;IAClB,6EACyC,EAAA;IApB7C;MAqBa,UAAU,EAAA;IArBvB;MAsBgB,oBAAoB,EAAA;IAtBpC;MAwBM,YAAY;MACZ,eAAe,EAAA","sourcesContent":[".fifteenPuzzleRenderer {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows));\n\n  > .piece {\n    --width: 80px;\n    --height: 80px;\n\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: .1s transform var(--easeOutCirc)\n              , .2s filter var(--easeOutCirc);\n    &.zero { opacity: 0; }\n    &.correct { filter: invert(100%); }\n    > .number {\n      margin: auto;\n      font-size: 28pt;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"fifteenPuzzleRenderer": "fifteenPuzzleRenderer",
-	"piece": "piece",
-	"zero": "zero",
-	"correct": "correct",
-	"number": "number"
+	"fifteenPuzzleRenderer": "_3ss3Gna_sKrOOExpi5jkfb",
+	"piece": "_3AZegAnsTZZIwWRT0_kPSj",
+	"zero": "DBWx8PujQWcOtXIAqqcfg",
+	"correct": "_2nsfCv9T-APNHkIXPd6w4R",
+	"number": "_2ftOLU0qvnrk3TcHTG_68w"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -74,10 +74,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".flexCenteringContainer {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center; }\n  .flexCenteringContainer > * {\n    position: relative;\n    margin: auto; }\n", "",{"version":3,"sources":["webpack://src/utils/flex-centering-container/style.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,uBAAuB;EACvB,qBAAqB,EAAA;EALvB;IAQI,kBAAkB;IAClB,YAAY,EAAA","sourcesContent":[".flexCenteringContainer {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center;\n\n  > * {\n    position: relative;\n    margin: auto;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._2ENQn7zXtH8Qb2T9Be-nT0 {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center; }\n  ._2ENQn7zXtH8Qb2T9Be-nT0 > * {\n    position: relative;\n    margin: auto; }\n", "",{"version":3,"sources":["webpack://src/utils/flex-centering-container/style.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,uBAAuB;EACvB,qBAAqB,EAAA;EALvB;IAQI,kBAAkB;IAClB,YAAY,EAAA","sourcesContent":[".flexCenteringContainer {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center;\n\n  > * {\n    position: relative;\n    margin: auto;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"flexCenteringContainer": "flexCenteringContainer"
+	"flexCenteringContainer": "_2ENQn7zXtH8Qb2T9Be-nT0"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30588,12 +30588,11 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_utils__WEBPACK_IMPORTED_MODULE_2__.defineOnGlobal)({ FifteenPuzzle: _fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle });
 function App() {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.generateRandom(4)), puzzle = _a[0], setPuzzle = _a[1];
+    var puzzle = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.generateRandom(4))[0];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () { return (0,_utils__WEBPACK_IMPORTED_MODULE_2__.defineOnGlobal)({ puzzle: puzzle }); });
     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_utils__WEBPACK_IMPORTED_MODULE_2__.FlexCenteringContainer, null,
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.Renderer, { puzzle: puzzle }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { backgroundColor: "#fff", width: "100px", height: "100px" }, onClick: function () { return setPuzzle(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.generateRandom(4)); } }, "reset")));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.Renderer, { puzzle: puzzle })));
 }
 
 
@@ -30797,10 +30796,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 (0,_utils__WEBPACK_IMPORTED_MODULE_4__.disableScroll)();
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_app__WEBPACK_IMPORTED_MODULE_2__.App, null), document.getElementById("app"));
-_utils__WEBPACK_IMPORTED_MODULE_4__.serviceWorker.register();
 
 
 /***/ }),
@@ -30951,8 +30948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_8__,
 /* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_8__.flip,
 /* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_8__.pass,
-/* harmony export */   "serviceWorker": () => /* reexport module object */ _service_worker__WEBPACK_IMPORTED_MODULE_9__,
-/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_10__.useForceUpdate
+/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_9__.useForceUpdate
 /* harmony export */ });
 /* harmony import */ var _flex_centering_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./flex-centering-container */ "./src/utils/flex-centering-container/index.ts");
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "./src/utils/array.ts");
@@ -30963,10 +30959,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
 /* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
 /* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
-/* harmony import */ var _service_worker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./service-worker */ "./src/utils/service-worker.ts");
-/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
-
-
+/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
 
 
 
@@ -31090,92 +31083,6 @@ function range() {
         default:
             var start_1 = args[0], end = args[1], step_1 = args[2];
             return __spreadArrays(Array(Math.ceil((end - start_1) / step_1))).map(function (v, i) { return start_1 + i * step_1; });
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/utils/service-worker.ts":
-/*!*************************************!*\
-  !*** ./src/utils/service-worker.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "register": () => /* binding */ register,
-/* harmony export */   "unregister": () => /* binding */ unregister
-/* harmony export */ });
-var isLocalhost = Boolean(window.location.hostname === "localhost" ||
-    window.location.hostname === "[::1]" ||
-    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
-function register(config) {
-    if (false) { var publicUrl; }
-}
-function registerValidSW(swUrl, config) {
-    navigator.serviceWorker
-        .register(swUrl)
-        .then(function (registration) {
-        registration.onupdatefound = function () {
-            var installingWorker = registration.installing;
-            if (installingWorker == null) {
-                return;
-            }
-            installingWorker.onstatechange = function () {
-                if (installingWorker.state === "installed") {
-                    if (navigator.serviceWorker.controller) {
-                        console.log("New content is available and will be used when all tabs for this page are closed.");
-                        if (config && config.onUpdate) {
-                            config.onUpdate(registration);
-                        }
-                    }
-                    else {
-                        console.log("Content is cached for offline use.");
-                        if (config && config.onSuccess) {
-                            config.onSuccess(registration);
-                        }
-                    }
-                }
-            };
-        };
-    })
-        .catch(function (error) {
-        console.error("Error during service worker registration:", error);
-    });
-}
-function checkValidServiceWorker(swUrl, config) {
-    fetch(swUrl, {
-        headers: { "Service-Worker": "script" },
-    })
-        .then(function (response) {
-        var contentType = response.headers.get("content-type");
-        if (response.status === 404 ||
-            (contentType != null && contentType.indexOf("javascript") === -1)) {
-            navigator.serviceWorker.ready.then(function (registration) {
-                registration.unregister().then(function () {
-                    window.location.reload();
-                });
-            });
-        }
-        else {
-            registerValidSW(swUrl, config);
-        }
-    })
-        .catch(function () {
-        console.log("No internet connection found. App is running in offline mode.");
-    });
-}
-function unregister() {
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.ready
-            .then(function (registration) {
-            registration.unregister();
-        })
-            .catch(function (error) {
-            console.error(error.message);
-        });
     }
 }
 
