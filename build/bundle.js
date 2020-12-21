@@ -30798,7 +30798,6 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_utils__WEBPACK_IMPORTED_MODULE_4__.disableScroll)();
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(_app__WEBPACK_IMPORTED_MODULE_2__.App, null), document.getElementById("app"));
-_utils__WEBPACK_IMPORTED_MODULE_4__.serviceWorker.register();
 
 
 /***/ }),
@@ -30949,8 +30948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Mapper": () => /* reexport module object */ _mapper__WEBPACK_IMPORTED_MODULE_8__,
 /* harmony export */   "flip": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_8__.flip,
 /* harmony export */   "pass": () => /* reexport safe */ _mapper__WEBPACK_IMPORTED_MODULE_8__.pass,
-/* harmony export */   "serviceWorker": () => /* reexport module object */ _service_worker__WEBPACK_IMPORTED_MODULE_9__,
-/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_10__.useForceUpdate
+/* harmony export */   "useForceUpdate": () => /* reexport safe */ _use_force_update__WEBPACK_IMPORTED_MODULE_9__.useForceUpdate
 /* harmony export */ });
 /* harmony import */ var _flex_centering_container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./flex-centering-container */ "./src/utils/flex-centering-container/index.ts");
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "./src/utils/array.ts");
@@ -30961,10 +30959,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log */ "./src/utils/log.ts");
 /* harmony import */ var _range__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./range */ "./src/utils/range.ts");
 /* harmony import */ var _mapper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mapper */ "./src/utils/mapper.ts");
-/* harmony import */ var _service_worker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./service-worker */ "./src/utils/service-worker.ts");
-/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
-
-
+/* harmony import */ var _use_force_update__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./use-force-update */ "./src/utils/use-force-update.ts");
 
 
 
@@ -31088,68 +31083,6 @@ function range() {
         default:
             var start_1 = args[0], end = args[1], step_1 = args[2];
             return __spreadArrays(Array(Math.ceil((end - start_1) / step_1))).map(function (v, i) { return start_1 + i * step_1; });
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/utils/service-worker.ts":
-/*!*************************************!*\
-  !*** ./src/utils/service-worker.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "register": () => /* binding */ register,
-/* harmony export */   "unregister": () => /* binding */ unregister
-/* harmony export */ });
-function register(config) {
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-            var swUrl = new URL("./service-worker.js", location.href);
-            registerValidSW(swUrl.href, config);
-        });
-    }
-}
-function registerValidSW(swUrl, config) {
-    navigator.serviceWorker
-        .register(swUrl)
-        .then(function (registration) {
-        registration.onupdatefound = function () {
-            var installingWorker = registration.installing;
-            if (installingWorker == null) {
-                return;
-            }
-            installingWorker.onstatechange = function () {
-                if (installingWorker.state === "installed") {
-                    if (navigator.serviceWorker.controller) {
-                        console.log("New content is available and will be used when all tabs for this page are closed.");
-                        if (config && config.onUpdate) {
-                            config.onUpdate(registration);
-                        }
-                    }
-                    else {
-                        console.log("Content is cached for offline use.");
-                        if (config && config.onSuccess) {
-                            config.onSuccess(registration);
-                        }
-                    }
-                }
-            };
-        };
-    })
-        .catch(function (error) {
-        console.error("Error during service worker registration:", error);
-    });
-}
-function unregister() {
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.ready
-            .then(function (registration) { return registration.unregister(); })
-            .catch(function (error) { return console.error(error.message); });
     }
 }
 
