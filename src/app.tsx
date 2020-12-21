@@ -10,6 +10,7 @@ export function App() {
   return <>
     <FlexCenteringContainer>
       <FifteenPuzzle.Renderer puzzle={puzzle} />
+      <div style={{backgroundColor:"#fff",width:"100px",height:"100px"}} onClick={() => setPuzzle(FifteenPuzzle.generateRandom(4))}>reset</div>
     </FlexCenteringContainer>
   </>;
 }
