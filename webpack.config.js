@@ -17,21 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /(?<!\.module)\.(sc|c)ss$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              url: false
-            }
-          },
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.module\.(sc|c)ss$/,
+        test: /\.(sc|c)ss$/,
         exclude: /node_modules/,
         use: [
           'style-loader',
@@ -40,7 +26,8 @@ module.exports = {
             options: {
               url: false,
               modules: {
-                mode: 'local'
+                mode: 'local',
+                localIdentName: "[local]__[hash:base64:8]"
               }
             }
           },
