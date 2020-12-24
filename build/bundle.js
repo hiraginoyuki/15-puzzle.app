@@ -1,6 +1,64 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/app.scss":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/app.scss ***!
+  \*******************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".name__EN0kZ17p {\n  position: \"fixed\";\n  left: 0;\n  bottom: 0;\n  margin: 8px 10px;\n  font-size: \"14px\";\n  color: #777; }\n", "",{"version":3,"sources":["webpack://src/app.scss"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,OAAO;EACP,SAAS;EACT,gBAAgB;EAChB,iBAAiB;EACjB,WAAW,EAAA","sourcesContent":[".name {\n  position: \"fixed\";\n  left: 0;\n  bottom: 0;\n  margin: 8px 10px;\n  font-size: \"14px\";\n  color: #777;\n}\n"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"name": "name__EN0kZ17p"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.scss":
+/*!***************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.scss ***!
+  \***************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".fifteenPuzzleRenderer__3jLwxR07 {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows)); }\n  .fifteenPuzzleRenderer__3jLwxR07 > .piece__1Hth9vdO {\n    --width: 80px;\n    --height: 80px;\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate(calc(var(--width) * var(--x)), calc(var(--height) * var(--y)));\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: 0.1s transform var(--easeOutCirc), 0.2s filter var(--easeOutCirc); }\n    .fifteenPuzzleRenderer__3jLwxR07 > .piece__1Hth9vdO.zero__1HOJPyq7 {\n      opacity: 0; }\n    .fifteenPuzzleRenderer__3jLwxR07 > .piece__1Hth9vdO.correct__2zq-pgR_ {\n      filter: invert(100%); }\n    .fifteenPuzzleRenderer__3jLwxR07 > .piece__1Hth9vdO > .number__1FwKa2wl {\n      margin: auto;\n      font-size: 28pt; }\n", "",{"version":3,"sources":["webpack://src/fifteen-puzzle/renderer.scss"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,kCAAkC;EAClC,gCAAgC,EAAA;EAHlC;IAMI,aAAQ;IACR,cAAS;IAET,aAAa;IACb,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,WAAW;IACX,mFAAqF;IACrF,kBAAkB;IAClB,sBAAsB;IACtB,gBAAgB;IAChB,kBAAkB;IAClB,6EACyC,EAAA;IApB7C;MAqBa,UAAU,EAAA;IArBvB;MAsBgB,oBAAoB,EAAA;IAtBpC;MAwBM,YAAY;MACZ,eAAe,EAAA","sourcesContent":[".fifteenPuzzleRenderer {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows));\n\n  > .piece {\n    --width: 80px;\n    --height: 80px;\n\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: .1s transform var(--easeOutCirc)\n              , .2s filter var(--easeOutCirc);\n    &.zero { opacity: 0; }\n    &.correct { filter: invert(100%); }\n    > .number {\n      margin: auto;\n      font-size: 28pt;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"fifteenPuzzleRenderer": "fifteenPuzzleRenderer__3jLwxR07",
+	"piece": "piece__1Hth9vdO",
+	"zero": "zero__1HOJPyq7",
+	"correct": "correct__2zq-pgR_",
+	"number": "number__1FwKa2wl"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss":
 /*!*********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
@@ -19,48 +77,17 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  width: 100vw;\n  height: 100vh;\n  overflow: hidden;\n  background-color: #222;\n  color: #ccc;\n  font-family: 'Roboto', sans-serif; }\n  body > #app {\n    width: 100%;\n    height: 100%; }\n\n:root {\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1); }\n", "",{"version":3,"sources":["webpack://src/index.scss"],"names":[],"mappings":"AAEA;EACE,SAAS;EACT,YAAY;EACZ,aAAa;EACb,gBAAgB;EAChB,sBAAsB;EACtB,WAAW;EACX,iCAAiC,EAAA;EAPnC;IASI,WAAW;IACX,YAAY,EAAA;;AAIhB;EACE,6CAAc,EAAA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');\r\n\r\nbody {\r\n  margin: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  background-color: #222;\r\n  color: #ccc;\r\n  font-family: 'Roboto', sans-serif;\r\n  > #app {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n\r\n:root {\r\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1);\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  margin: 0;\n  width: 100vw;\n  height: 100vh;\n  overflow: hidden;\n  background-color: #222;\n  color: #ccc;\n  font-family: 'Roboto', sans-serif; }\n  body > #app {\n    width: 100%;\n    height: 100%; }\n\n:root {\n  --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1); }\n", "",{"version":3,"sources":["webpack://src/index.scss"],"names":[],"mappings":"AAEA;EAEI,SAAS;EACT,YAAY;EACZ,aAAa;EACb,gBAAgB;EAChB,sBAAsB;EACtB,WAAW;EACX,iCAAiC,EAAA;EARrC;IAUM,WAAW;IACX,YAAY,EAAA;;AAXlB;EAgBI,6CAAc,EAAA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');\r\n\r\n:global {\r\n  body {\r\n    margin: 0;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    overflow: hidden;\r\n    background-color: #222;\r\n    color: #ccc;\r\n    font-family: 'Roboto', sans-serif;\r\n    > #app {\r\n      width: 100%;\r\n      height: 100%;\r\n    }\r\n  }\r\n  \r\n  :root {\r\n    --easeOutCirc: cubic-bezier(0, 0.55, 0.45, 1);\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.module.scss":
-/*!**********************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.module.scss ***!
-  \**********************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "._3ss3Gna_sKrOOExpi5jkfb {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows)); }\n  ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj {\n    --width: 80px;\n    --height: 80px;\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate(calc(var(--width) * var(--x)), calc(var(--height) * var(--y)));\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: 0.1s transform var(--easeOutCirc), 0.2s filter var(--easeOutCirc); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj.DBWx8PujQWcOtXIAqqcfg {\n      opacity: 0; }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj._2nsfCv9T-APNHkIXPd6w4R {\n      filter: invert(100%); }\n    ._3ss3Gna_sKrOOExpi5jkfb > ._3AZegAnsTZZIwWRT0_kPSj > ._2ftOLU0qvnrk3TcHTG_68w {\n      margin: auto;\n      font-size: 28pt; }\n", "",{"version":3,"sources":["webpack://src/fifteen-puzzle/renderer.module.scss"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,kCAAkC;EAClC,gCAAgC,EAAA;EAHlC;IAMI,aAAQ;IACR,cAAS;IAET,aAAa;IACb,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,WAAW;IACX,mFAAqF;IACrF,kBAAkB;IAClB,sBAAsB;IACtB,gBAAgB;IAChB,kBAAkB;IAClB,6EACyC,EAAA;IApB7C;MAqBa,UAAU,EAAA;IArBvB;MAsBgB,oBAAoB,EAAA;IAtBpC;MAwBM,YAAY;MACZ,eAAe,EAAA","sourcesContent":[".fifteenPuzzleRenderer {\n  -webkit-user-select: none;\n  width: calc(80px * var(--columns));\n  height: calc(80px * var(--rows));\n\n  > .piece {\n    --width: 80px;\n    --height: 80px;\n\n    display: flex;\n    position: absolute;\n    width: 76px;\n    height: 76px;\n    margin: 2px;\n    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );\n    border-radius: 5px;\n    background-color: #111;\n    font-weight: 900;\n    filter: invert(0%);\n    transition: .1s transform var(--easeOutCirc)\n              , .2s filter var(--easeOutCirc);\n    &.zero { opacity: 0; }\n    &.correct { filter: invert(100%); }\n    > .number {\n      margin: auto;\n      font-size: 28pt;\n    }\n  }\n}\n"],"sourceRoot":""}]);
-// Exports
-___CSS_LOADER_EXPORT___.locals = {
-	"fifteenPuzzleRenderer": "_3ss3Gna_sKrOOExpi5jkfb",
-	"piece": "_3AZegAnsTZZIwWRT0_kPSj",
-	"zero": "DBWx8PujQWcOtXIAqqcfg",
-	"correct": "_2nsfCv9T-APNHkIXPd6w4R",
-	"number": "_2ftOLU0qvnrk3TcHTG_68w"
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.module.scss":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.module.scss ***!
-  \***********************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.scss":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.scss ***!
+  \****************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74,10 +101,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._2ENQn7zXtH8Qb2T9Be-nT0 {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center; }\n  ._2ENQn7zXtH8Qb2T9Be-nT0 > * {\n    position: relative;\n    margin: auto; }\n", "",{"version":3,"sources":["webpack://src/utils/flex-centering-container/style.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,uBAAuB;EACvB,qBAAqB,EAAA;EALvB;IAQI,kBAAkB;IAClB,YAAY,EAAA","sourcesContent":[".flexCenteringContainer {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center;\n\n  > * {\n    position: relative;\n    margin: auto;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".flexCenteringContainer__2IhkERfb {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center; }\n  .flexCenteringContainer__2IhkERfb > * {\n    position: relative;\n    margin: auto; }\n", "",{"version":3,"sources":["webpack://src/utils/flex-centering-container/style.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,uBAAuB;EACvB,qBAAqB,EAAA;EALvB;IAQI,kBAAkB;IAClB,YAAY,EAAA","sourcesContent":[".flexCenteringContainer {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  justify-content: center;\n  align-content: center;\n\n  > * {\n    position: relative;\n    margin: auto;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"flexCenteringContainer": "_2ENQn7zXtH8Qb2T9Be-nT0"
+	"flexCenteringContainer": "flexCenteringContainer__2IhkERfb"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30206,6 +30233,62 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/app.scss":
+/*!**********************!*\
+  !*** ./src/app.scss ***!
+  \**********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var api = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../node_modules/sass-loader/dist/cjs.js!./app.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/app.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/fifteen-puzzle/renderer.scss":
+/*!******************************************!*\
+  !*** ./src/fifteen-puzzle/renderer.scss ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../node_modules/sass-loader/dist/cjs.js!./renderer.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
 /***/ "./src/index.scss":
 /*!************************!*\
   !*** ./src/index.scss ***!
@@ -30234,42 +30317,14 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./src/fifteen-puzzle/renderer.module.scss":
-/*!*************************************************!*\
-  !*** ./src/fifteen-puzzle/renderer.module.scss ***!
-  \*************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!../../node_modules/sass-loader/dist/cjs.js!./renderer.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/fifteen-puzzle/renderer.module.scss");
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.id, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = api(content, options);
-
-
-
-module.exports = content.locals || {};
-
-/***/ }),
-
-/***/ "./src/utils/flex-centering-container/style.module.scss":
-/*!**************************************************************!*\
-  !*** ./src/utils/flex-centering-container/style.module.scss ***!
-  \**************************************************************/
+/***/ "./src/utils/flex-centering-container/style.scss":
+/*!*******************************************************!*\
+  !*** ./src/utils/flex-centering-container/style.scss ***!
+  \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var api = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!../../../node_modules/sass-loader/dist/cjs.js!./style.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.module.scss");
+            var content = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!../../../node_modules/sass-loader/dist/cjs.js!./style.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/utils/flex-centering-container/style.scss");
 
             content = content.__esModule ? content.default : content;
 
@@ -30583,6 +30638,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fifteen-puzzle */ "./src/fifteen-puzzle/index.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./src/utils/index.ts");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -30592,7 +30650,8 @@ function App() {
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () { return (0,_utils__WEBPACK_IMPORTED_MODULE_2__.defineOnGlobal)({ puzzle: puzzle }); });
     return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_utils__WEBPACK_IMPORTED_MODULE_2__.FlexCenteringContainer, null,
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.Renderer, { puzzle: puzzle })));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fifteen_puzzle__WEBPACK_IMPORTED_MODULE_1__.FifteenPuzzle.Renderer, { puzzle: puzzle })),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_app_scss__WEBPACK_IMPORTED_MODULE_3___default().name) }, "Made by Yuki Hiragino"));
 }
 
 
@@ -30741,8 +30800,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./src/utils/index.ts");
-/* harmony import */ var _renderer_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.module.scss */ "./src/fifteen-puzzle/renderer.module.scss");
-/* harmony import */ var _renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _renderer_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderer.scss */ "./src/fifteen-puzzle/renderer.scss");
+/* harmony import */ var _renderer_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_renderer_scss__WEBPACK_IMPORTED_MODULE_2__);
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -30761,13 +30820,13 @@ var EVENT = _utils__WEBPACK_IMPORTED_MODULE_1__.isMobile ? "onTouchStart" : "onM
 function FifteenPuzzleRenderer(props) {
     var forceUpdate = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.useForceUpdate)();
     var numbers = props.puzzle.getNumbers();
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().fifteenPuzzleRenderer), style: { "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } }, (0,_utils__WEBPACK_IMPORTED_MODULE_1__.range)(numbers.length).map(function (number) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_renderer_scss__WEBPACK_IMPORTED_MODULE_2___default().fifteenPuzzleRenderer), style: { "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } }, (0,_utils__WEBPACK_IMPORTED_MODULE_1__.range)(numbers.length).map(function (number) {
         var _a;
         var point = props.puzzle.getPointFromValue(number);
         var index = props.puzzle.convertPointToIndex(point);
         var onTap = function () { return (props.puzzle.tap(point), console.log("tapped", point), forceUpdate()); };
-        return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", __assign({ className: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.joinClassNames)((_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().piece), number === index + 1 && (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().correct), number === 0 && (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().zero)), style: { "--x": point[0], "--y": point[1] }, key: number }, (_a = {}, _a[EVENT] = onTap, _a)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_renderer_module_scss__WEBPACK_IMPORTED_MODULE_2___default().number) },
+        return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", __assign({ className: (0,_utils__WEBPACK_IMPORTED_MODULE_1__.joinClassNames)((_renderer_scss__WEBPACK_IMPORTED_MODULE_2___default().piece), number === index + 1 && (_renderer_scss__WEBPACK_IMPORTED_MODULE_2___default().correct), number === 0 && (_renderer_scss__WEBPACK_IMPORTED_MODULE_2___default().zero)), style: { "--x": point[0], "--y": point[1] }, key: number }, (_a = {}, _a[EVENT] = onTap, _a)),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: (_renderer_scss__WEBPACK_IMPORTED_MODULE_2___default().number) },
                 " ",
                 number,
                 " "));
@@ -30883,8 +30942,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .. */ "./src/utils/index.ts");
-/* harmony import */ var _style_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.module.scss */ "./src/utils/flex-centering-container/style.module.scss");
-/* harmony import */ var _style_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/utils/flex-centering-container/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -30900,7 +30959,7 @@ var __assign = (undefined && undefined.__assign) || function () {
 
 
 function FlexCenteringContainer(props) {
-    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", __assign({}, props, { className: (0,___WEBPACK_IMPORTED_MODULE_1__.joinClassNames)((_style_module_scss__WEBPACK_IMPORTED_MODULE_2___default().flexCenteringContainer), props.className) }),
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", __assign({}, props, { className: (0,___WEBPACK_IMPORTED_MODULE_1__.joinClassNames)((_style_scss__WEBPACK_IMPORTED_MODULE_2___default().flexCenteringContainer), props.className) }),
         " ",
         props.children,
         " ");
