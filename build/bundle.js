@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".name__EN0kZ17p {\n  position: \"fixed\";\n  left: 0;\n  bottom: 0;\n  margin: 8px 10px;\n  font-size: \"14px\";\n  color: #777; }\n", "",{"version":3,"sources":["webpack://src/app.scss"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,OAAO;EACP,SAAS;EACT,gBAAgB;EAChB,iBAAiB;EACjB,WAAW,EAAA","sourcesContent":[".name {\n  position: \"fixed\";\n  left: 0;\n  bottom: 0;\n  margin: 8px 10px;\n  font-size: \"14px\";\n  color: #777;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".name__EN0kZ17p {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  margin: 8px 10px;\n  font-size: 14px;\n  color: #777; }\n", "",{"version":3,"sources":["webpack://src/app.scss"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,OAAO;EACP,SAAS;EACT,gBAAgB;EAChB,eAAe;EACf,WAAW,EAAA","sourcesContent":[".name {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  margin: 8px 10px;\n  font-size: 14px;\n  color: #777;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"name": "name__EN0kZ17p"
