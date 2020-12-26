@@ -1,23 +1,17 @@
 const { resolve } = require("path");
 
 module.exports = {
-  entry: './src/index.tsx',
-  output: {
-    path: resolve(__dirname, "public/build"),
-    filename: './bundle.js'
-  },
-
-  mode: 'development',
+  mode: process.env.NODE_ENV || "production",
   devtool: 'source-map',
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.scss']
-  },
-  target: 'web',
+
+  entry: './src/index.tsx',
+  resolve: { extensions: [ '.ts', '.tsx', '.js', '.scss' ] },
+  output: { path: resolve(__dirname, 'public/build'), filename: './bundle.js' },
 
   module: {
     rules: [
-      { test: /\.(sc|c)ss$/,
-        loaders: [
+      { test: /\.scss$/,
+        use: [
           { loader: 'style-loader' },
           { loader: 'css-loader',
             options: {
