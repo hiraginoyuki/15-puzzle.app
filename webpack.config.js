@@ -16,28 +16,19 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.(sc|c)ss$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
+      { test: /\.(sc|c)ss$/,
+        loaders: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader',
             options: {
               url: false,
-              modules: {
-                mode: 'local',
-                localIdentName: "[local]__[hash:base64:8]"
-              }
+              modules: { mode: 'local', localIdentName: "[local]__[hash:base64:8]" }
             }
           },
-          'sass-loader'
+          { loader: 'sass-loader' }
         ]
       },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader'
-      },
+      { test: /\.tsx?$/, loader: 'ts-loader' }
     ]
   }
 };
