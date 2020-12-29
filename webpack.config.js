@@ -1,56 +1,53 @@
-const { resolve } = require("path");
+const path = require("path");
+const { resolve } = path;
+const isDevelopment = process.env.NODE_ENV === "development";
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.tsx',
-  output: {
-    path: resolve(__dirname, "public/build"),
-    filename: './bundle.js'
-  },
+  mode: isDevelopment ? "development" : "production",
+  cache: true,
 
-  mode: 'development',
-  devtool: 'source-map',
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.scss']
+  entry: './src/index.tsx',
+  resolve: { extensions: [ '.ts', '.tsx', '.js', '.css', '.scss' ] },
+  output: {
+    path: resolve(__dirname, 'public/build'),
+    filename: './bundle.js',
+    publicPath: resolve(__dirname, './public/'),
   },
-  target: 'electron-renderer',
+  devServer: {
+    writeToDisk: (filePath) => !/.*\.hot-update\..+$/.test(filePath),
+    inline: true,
+    hot: false,
+    port: 8080,
+    publicPath: resolve(__dirname, './public/'),
+    contentBase: [ './src/', './public/', './public/build/' ],
+  },
 
   module: {
     rules: [
-      {
-        test: /(?<!\.module)\.(sc|c)ss$/,
-        exclude: /node_modules/,
+      { test: /\.scss$/,
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              url: false
-            }
-          },
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.module\.(sc|c)ss$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
+          { loader: 'style-loader' },
+          { loader: 'css-loader',
             options: {
               url: false,
-              modules: {
-                mode: 'local'
-              }
+              modules: { mode: 'local', localIdentName: "[local]__[hash:base64:8]" }
             }
           },
-          'sass-loader'
+          { loader: 'sass-loader' },
         ]
       },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader'
-      },
+      { test: /\.tsx?$/,
+        use: [
+          { loader: require.resolve("babel-loader"),
+            options: {
+              plugins: [ isDevelopment && require.resolve("react-refresh/babel") ].filter(Boolean)
+            }
+          },
+          { loader: 'ts-loader' },
+        ]
+      }
     ]
-  }
+  },
+  plugins: [ isDevelopment && new ReactRefreshWebpackPlugin() ].filter(Boolean)
 };

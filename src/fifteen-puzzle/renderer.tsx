@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { FifteenPuzzle } from './fifteen-puzzle';
 import { useForceUpdate, joinClassNames, range, isMobile } from '../utils';
-import styles from './renderer.module.scss';
+import styles from './renderer.scss';
 
 const EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 
