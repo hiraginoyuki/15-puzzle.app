@@ -1,10 +1,11 @@
 import { flip, range, chooseRandomIndex, chooseRandom } from '../utils';
 import { FifteenPuzzleRenderer } from './renderer';
+import { EventEmitter } from 'events';
 
 const { floor, abs } = Math;
 
 export type Point2D = [number, number];
-export class FifteenPuzzle {
+export class FifteenPuzzle extends EventEmitter {
   static Renderer = FifteenPuzzleRenderer;
 
   static generateRandom(columns: number = 4, rows: number = columns) {
@@ -28,6 +29,7 @@ export class FifteenPuzzle {
     n: number | Point2D = 4,
     private numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
   ) {
+    super();
     if (Array.isArray(n)) [this.columns, this.rows] = n;
     else this.columns = this.rows = n;
     if (!this.isCorrect()) throw new RangeError("Invalid numbers");
