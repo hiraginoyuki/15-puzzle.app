@@ -25,7 +25,7 @@ export class FifteenPuzzle {
   public readonly columns: number;
   public readonly rows: number;
   constructor(
-    n: number | [number, number] = 4,
+    n: number | Point2D = 4,
     private numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
   ) {
     if (Array.isArray(n)) [this.columns, this.rows] = n;
