@@ -66,6 +66,10 @@ export class FifteenPuzzle extends EventEmitter {
     });
     return swapCount % 2 === 0; // A puzzle is solvable only when swapCount is an even.
   }
+  isSolved() {
+    return this.isCorrect()
+        && range(1, this.length).concat(0).every((n, i) => this.getValueFromPoint(this.convertIndexToPoint(i)) == n);
+  }
 
   swap(point1: Point2D, point2: Point2D) {
     const value1 = this.getValueFromPoint(point1);
