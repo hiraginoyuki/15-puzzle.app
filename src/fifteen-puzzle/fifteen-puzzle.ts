@@ -64,7 +64,7 @@ export class FifteenPuzzle extends EventEmitter {
         return acc + 1;
       } else return acc;
     });
-    return swapCount % 2 === 0; // A puzzle is solvable only when swapCount is an even.
+    return swapCount % 2 === 0; // A puzzle is considered solvable only when swapCount is an even.
   }
   isSolved() {
     return this.isCorrect()
