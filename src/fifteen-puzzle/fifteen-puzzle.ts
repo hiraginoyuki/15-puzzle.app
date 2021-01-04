@@ -101,6 +101,7 @@ export class FifteenPuzzle extends EventEmitter {
         this.getEmptyPoint(),
         isVertical ? [point[0], emptyPoint[1] - i] : [emptyPoint[0] - i, point[1]]
       ));
+    this.emit("on-tap", this);
     return true;
   }
 }
