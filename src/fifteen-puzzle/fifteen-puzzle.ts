@@ -50,9 +50,9 @@ export class FifteenPuzzle extends EventEmitter {
   isCorrect() {
     return this.numbers.length === this.columns * this.rows && range(this.numbers.length).every(i => this.numbers.includes(i));
   }
-  /** 
+  /**
    * A puzzle is said to be solvable only when it can be solved by swapping two of the pieces even times. 
-   */ 
+   */
   isSolvable() {
     if (!this.isCorrect()) return false;
     const cloned = this.clone();
@@ -94,7 +94,6 @@ export class FifteenPuzzle extends EventEmitter {
         this.getEmptyPoint(),
         isVertical ? [point[0], emptyPoint[1] - i] : [emptyPoint[0] - i, point[1]]
       ));
-    this.clone();
     return true;
   }
 }
