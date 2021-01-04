@@ -13,7 +13,8 @@ export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
   const numbers = props.puzzle.getNumbers();
   return (
     <div className={styles.fifteenPuzzleRenderer}
-         style={{ "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } as CSSProperties}>
+         style={{ "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } as CSSProperties}
+    >
       { range(numbers.length).map((number) => {
         const point = props.puzzle.getPointFromValue(number);
         const index = props.puzzle.pointUtil.convertPointToIndex(point);
@@ -21,7 +22,8 @@ export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
         return <div className={joinClassNames(styles.piece, number === index + 1 && styles.correct, number === 0 && styles.zero)}
                     style={{ "--x": point[0], "--y": point[1] } as CSSProperties}
                     key={number}
-                    {...{ [EVENT]: onTap }}>
+                    {...{ [EVENT]: onTap }}
+        >
           <div className={styles.number}> {number} </div>
         </div>;
       }) }
