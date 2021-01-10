@@ -1,10 +1,18 @@
 import { flip, range, chooseRandomIndex, chooseRandom } from '../utils';
 import { FifteenPuzzleRenderer } from './renderer';
+import { EventEmitter } from 'events';
 
 const { floor, abs } = Math;
 
 export type Point2D = [number, number];
-export class FifteenPuzzle {
+export class PointUtil {
+  constructor(
+    private readonly columns: number
+  ) {}
+  convertPointToIndex(point: Point2D) { return point[0] + point[1] * this.columns; }
+  convertIndexToPoint(index: number): Point2D { return [index % this.columns, floor(index / this.columns)]; }
+}
+export class FifteenPuzzle extends EventEmitter {
   static Renderer = FifteenPuzzleRenderer;
 
   static generateRandom(columns: number = 4, rows: number = columns) {
@@ -24,12 +32,15 @@ export class FifteenPuzzle {
 
   public readonly columns: number;
   public readonly rows: number;
+  public pointUtil: PointUtil;
   constructor(
-    n: number | [number, number] = 4,
+    n: number | Point2D = 4,
     private numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
   ) {
+    super();
     if (Array.isArray(n)) [this.columns, this.rows] = n;
     else this.columns = this.rows = n;
+    this.pointUtil = new PointUtil(this.columns);
     if (!this.isCorrect()) throw new RangeError("Invalid numbers");
   }
 
@@ -38,16 +49,17 @@ export class FifteenPuzzle {
 
   clone() { return new (this.constructor as typeof FifteenPuzzle)([this.rows, this.columns], this.numbers.slice()); }
   equals(point1: Point2D, point2: Point2D) { return point1[0] === point2[0] && point1[1] === point2[1]; }
-  convertPointToIndex(point: Point2D) { return point[0] + point[1] * this.columns; }
-  convertIndexToPoint(index: number): Point2D { return [index % this.columns, floor(index / this.columns)]; }
-  setValueOfPoint(point: Point2D, value: number) { this.numbers[this.convertPointToIndex(point)] = value; return this; }
-  getValueFromPoint(point: Point2D) { return this.numbers[this.convertPointToIndex(point)]; }
-  getPointFromValue(value: number) { return this.convertIndexToPoint(this.numbers.findIndex(i => i === value)); }
+  setValueOfPoint(point: Point2D, value: number) { this.numbers[this.pointUtil.convertPointToIndex(point)] = value; return this; }
+  getValueFromPoint(point: Point2D) { return this.numbers[this.pointUtil.convertPointToIndex(point)]; }
+  getPointFromValue(value: number) { return this.pointUtil.convertIndexToPoint(this.numbers.findIndex(i => i === value)); }
   getEmptyPoint() { return this.getPointFromValue(0); }
 
   isCorrect() {
     return this.numbers.length === this.columns * this.rows && range(this.numbers.length).every(i => this.numbers.includes(i));
   }
+  /**
+   * A puzzle is said to be solvable only when it can be solved by swapping two of the pieces even times. 
+   */
   isSolvable() {
     if (!this.isCorrect()) return false;
     const cloned = this.clone();
@@ -57,12 +69,16 @@ export class FifteenPuzzle {
     }
     const swapCount = range(cloned.columns * cloned.rows - 1).reduce((acc, i) => {
       const j = cloned.getPointFromValue(i + 1);
-      if (i !== cloned.convertPointToIndex(j)) {
-        cloned.swap(cloned.convertIndexToPoint(i), j);
+      if (i !== cloned.pointUtil.convertPointToIndex(j)) {
+        cloned.swap(cloned.pointUtil.convertIndexToPoint(i), j);
         return acc + 1;
       } else return acc;
     });
-    return swapCount % 2 === 0; // A puzzle is solvable only when swapCount is an even.
+    return swapCount % 2 === 0;
+  }
+  isSolved() {
+    return this.isCorrect()
+        && range(1, this.length).concat(0).every((n, i) => this.getValueFromPoint(this.pointUtil.convertIndexToPoint(i)) == n);
   }
 
   swap(point1: Point2D, point2: Point2D) {
@@ -85,7 +101,7 @@ export class FifteenPuzzle {
         this.getEmptyPoint(),
         isVertical ? [point[0], emptyPoint[1] - i] : [emptyPoint[0] - i, point[1]]
       ));
-    this.clone();
+    this.emit("on-tap", this);
     return true;
   }
 }
