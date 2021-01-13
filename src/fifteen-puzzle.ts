@@ -1,5 +1,4 @@
-import { flip, range, chooseRandomIndex, chooseRandom } from '../utils';
-import { FifteenPuzzleRenderer } from './renderer';
+import { flip, range, chooseRandomIndex, chooseRandom } from './utils';
 import { EventEmitter } from 'events';
 
 const { floor, abs } = Math;
@@ -13,8 +12,6 @@ export class PointUtil {
   convertIndexToPoint(index: number): Point2D { return [index % this.columns, floor(index / this.columns)]; }
 }
 export class FifteenPuzzle extends EventEmitter {
-  static Renderer = FifteenPuzzleRenderer;
-
   static generateRandom(columns: number = 4, rows: number = columns) {
     const length = rows * columns;
     const numbers: number[] = [];

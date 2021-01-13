@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
-import { FifteenPuzzle } from './fifteen-puzzle';
-import { useForceUpdate, joinClassNames, range, isMobile } from '../utils';
+import { FifteenPuzzle } from '../../fifteen-puzzle';
+import { useForceUpdate, joinClassNames, range, isMobile } from '../../utils';
 import styles from './renderer.scss';
 
 export interface FifteenPuzzleRendererProps {
