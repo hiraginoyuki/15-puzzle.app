@@ -9,7 +9,7 @@ export interface FifteenPuzzleRendererProps {
 export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
   const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
   const forceUpdate = useForceUpdate();
-  const numbers = props.puzzle.getNumbers();
+  const numbers = props.puzzle.numbers;
   return (
     <div className={styles.fifteenPuzzleRenderer}
          style={{ "--columns": props.puzzle.columns, "--rows": props.puzzle.rows } as CSSProperties}
