@@ -7,7 +7,7 @@ import styles from './app.scss';
 defineOnGlobal({ FifteenPuzzle });
 export function App() {
   const [ puzzle, setPuzzle ] = useState(FifteenPuzzle.generateRandom(4));
-  useEffect(() => defineOnGlobal({ puzzle }));
+  useEffect(() => defineOnGlobal({ puzzle, setPuzzle }), [puzzle, setPuzzle]);
 
   return <>
     <FlexCenteringContainer>
