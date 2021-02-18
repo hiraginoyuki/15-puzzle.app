@@ -12,7 +12,7 @@ export function App() {
   return <>
     <FlexCenteringContainer>
       <FifteenPuzzleRenderer puzzle={puzzle} />
-      <div style={{backgroundColor:"#fff",width:"100px",height:"100px"}} onClick={() => setPuzzle(FifteenPuzzle.generateRandom(4))}>reset</div>
+      {/* <div style={{backgroundColor:"#fff",width:"100px",height:"100px"}} onClick={() => setPuzzle(FifteenPuzzle.generateRandom(4))}>reset</div> */}
     </FlexCenteringContainer>
     <div className={styles.name}>Made by Yuki Hiragino</div>
   </>;
