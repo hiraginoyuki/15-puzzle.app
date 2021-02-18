@@ -32,7 +32,7 @@ export class FifteenPuzzle extends EventEmitter {
   public pointUtil: PointUtil;
   constructor(
     n: number | Point2D = 4,
-    private numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
+    public numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
   ) {
     super();
     if (Array.isArray(n)) [this.columns, this.rows] = n;
@@ -42,7 +42,6 @@ export class FifteenPuzzle extends EventEmitter {
   }
 
   get length() { return this.numbers.length; }
-  getNumbers() { return this.numbers; }
 
   clone() { return new (this.constructor as typeof FifteenPuzzle)([this.rows, this.columns], this.numbers.slice()); }
   equals(point1: Point2D, point2: Point2D) { return point1[0] === point2[0] && point1[1] === point2[1]; }
