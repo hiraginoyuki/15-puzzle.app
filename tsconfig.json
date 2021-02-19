@@ -12,7 +12,7 @@
     "outDir": "./public/build",
     "module": "es6",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": ["es2019", "es6", "dom"],
     "jsx": "react"
   }
 }
