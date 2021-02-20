@@ -1,4 +1,5 @@
 .fifteenPuzzleRenderer {
+  user-select: none;
   -webkit-user-select: none;
   width: calc(80px * var(--columns));
   height: calc(80px * var(--rows));
@@ -19,7 +20,7 @@
     filter: invert(0%);
     transition: .1s transform var(--easeOutCirc)
               , .2s filter var(--easeOutCirc);
-    &.zero { opacity: 0; }
+    &.hidden { opacity: 0; }
     &.correct { filter: invert(100%); }
     > .number {
       margin: auto;
