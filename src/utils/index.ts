@@ -1,5 +1,6 @@
 export * from './flex-centering-container';
 export * from './array';
+export * from './computed-state';
 export * from './define-on-global';
 export * from './disable-scroll';
 export * from './is-mobile';
