@@ -6,18 +6,17 @@ import styles from './renderer.scss';
 export interface FifteenPuzzleRendererProps {
   puzzle: FifteenPuzzle;
 }
-export function FifteenPuzzleRenderer(props: FifteenPuzzleRendererProps) {
+export function FifteenPuzzleRenderer({ puzzle }: FifteenPuzzleRendererProps) {
   const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
   const forceUpdate = useForceUpdate();
-  const numbers = props.puzzle.numbers;
   return (
     <div className={styles.fifteenPuzzleRenderer}
-         style={style.var({ columns: props.puzzle.columns, rows: props.puzzle.rows })}
+         style={style.var({ columns: puzzle.columns, rows: puzzle.rows })}
     >
-      { range(numbers.length).map((number) => {
-        const point = props.puzzle.getPointFromValue(number);
-        const index = props.puzzle.pointUtil.convertPointToIndex(point);
-        const onTap = () => (props.puzzle.tap(point), console.log("tapped", point), forceUpdate());
+      { range(puzzle.numbers.length).map((number) => {
+        const point = puzzle.getPointFromValue(number);
+        const index = puzzle.pointUtil.convertPointToIndex(point);
+        const onTap = () => (puzzle.tap(point), console.log("tapped", point), forceUpdate());
         return <Piece key={number} zero={number == 0} correct={number == index + 1}
                       tapEvent={TAP_EVENT} onTap={onTap}
                       x={point[0]} y={point[1]}>
@@ -37,9 +36,9 @@ interface PieceProps<Z extends boolean> {
   zero: Z;
   correct: Z extends true ? false : boolean;
 }
-function Piece<Z extends boolean>(props: PropsWithChildren<PieceProps<Z>>) {
-  return <div className={joinClassNames(styles.piece, props.correct && styles.correct, props.zero && styles.zero)}
-              style={style.var({ x: props.x, y: props.y })}
-              key={props.key}
-              {...{ [props.tapEvent]: props.onTap }}> { props.children } </div>;
+function Piece<Z extends boolean>({ x, y, tapEvent, onTap, key, zero, correct, children }: PropsWithChildren<PieceProps<Z>>) {
+  return <div className={joinClassNames(styles.piece, correct && styles.correct, zero && styles.zero)}
+              style={style.var({ x, y })}
+              key={key}
+              {...{ [tapEvent]: onTap }}> { children } </div>;
 }
