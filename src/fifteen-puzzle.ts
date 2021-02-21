@@ -16,7 +16,7 @@ export class FifteenPuzzle extends EventEmitter {
     const length = rows * columns;
     const numbers: number[] = [];
     const unusedNumbers = range(1, length);
-    for (const _ in range(length - 3)) {
+    for (const _ of range(length - 3)) {
       numbers.push(unusedNumbers.splice(chooseRandomIndex(unusedNumbers), 1)[0]);
     }
     let puzzle = new this([columns, rows], numbers.concat(unusedNumbers, 0));
