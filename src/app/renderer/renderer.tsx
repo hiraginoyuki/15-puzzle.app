@@ -24,7 +24,7 @@ export function FifteenPuzzleRenderer() {
   const [ puzzle, setPuzzle ] = useState(FifteenPuzzle.generateRandom(4));
   const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
   const forceUpdate = useForceUpdate();
-  const listener = useRef(({ key }: KeyboardEvent) => onKeyDown(key));
+  const listener = useRef<(event: KeyboardEvent) => any>();
 
   function reset() {
     setPuzzle(FifteenPuzzle.generateRandom());
@@ -45,7 +45,7 @@ export function FifteenPuzzleRenderer() {
 
   useEffect(() => defineOnGlobal({ puzzle, setPuzzle, forceUpdate }));
   useEffect(() => {
-    document.removeEventListener("keydown", listener.current);
+    document.removeEventListener("keydown", listener.current!);
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
   }, [puzzle]);
 
