@@ -1,10 +1,10 @@
-const path = require("path");
+const path = require('path');
 const { resolve } = path;
-const isDevelopment = process.env.NODE_ENV === "development";
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const isDevelopment = process.env.NODE_ENV === 'development';
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
-  mode: isDevelopment ? "development" : "production",
+  mode: isDevelopment ? 'development' : 'production',
   cache: true,
 
   entry: './src/index.tsx',
@@ -31,7 +31,7 @@ module.exports = {
           { loader: 'css-loader',
             options: {
               url: false,
-              modules: { mode: 'local', localIdentName: "[local]__[hash:base64:8]" }
+              modules: { mode: 'local', localIdentName: '[local]__[hash:base64:8]' }
             }
           },
           { loader: 'sass-loader' },
@@ -39,9 +39,9 @@ module.exports = {
       },
       { test: /\.tsx?$/,
         use: [
-          { loader: require.resolve("babel-loader"),
+          { loader: require.resolve('babel-loader'),
             options: {
-              plugins: [ isDevelopment && require.resolve("react-refresh/babel") ].filter(Boolean)
+              plugins: [ isDevelopment && require.resolve('react-refresh/babel') ].filter(Boolean)
             }
           },
           { loader: 'ts-loader' },
