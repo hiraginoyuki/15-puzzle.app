@@ -3,16 +3,12 @@ import { FifteenPuzzle, Point2D } from '../../fifteen-puzzle';
 import { useForceUpdate, joinClassNames, range, isMobile, style, useComputedState, defineOnGlobal } from '../../utils';
 import styles from './renderer.scss';
 
-const keys = [
-  "4", "5", "6", "7",
-  "r", "t", "y", "u",
-  "f", "g", "h", "j",
-  "v", "b", "n", "m",
-] as const;
-const keyMap: { [key: string]: Point2D } = Object.fromEntries(
-  (Object.entries(keys) as any as [number, string][]).map(([index, key]) => [key, [index % 4, Math.floor(index / 4)]])
-);
-console.log(keyMap);
+const keyMap = {
+  4:[0,0], 5:[1,0], 6:[2,0], 7:[3,0],
+  r:[0,1], t:[1,1], y:[2,1], u:[3,1],
+  f:[0,2], g:[1,2], h:[2,2], j:[3,2],
+  v:[0,3], b:[1,3], n:[2,3], m:[3,3],
+} as { [key: string]: Point2D };
 
 function forceSolve(puzzle: FifteenPuzzle): FifteenPuzzle {
   puzzle.numbers = [...Array(puzzle.columns * puzzle.rows - 1)].map((_, i) => i + 1).concat(0);
