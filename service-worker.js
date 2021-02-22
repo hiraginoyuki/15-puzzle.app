@@ -8,6 +8,13 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
+  ({ url }) => url.host === 'unpkg.com',
+  new workbox.strategies.CacheFirst({
+    cacheName: 'assets',
+  }),
+);
+
+workbox.routing.registerRoute(
   ({ request }) =>
     request.destination === 'style' ||
     request.destination === 'script' ||
