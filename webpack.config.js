@@ -23,6 +23,11 @@ module.exports = {
     contentBase: [ './src/', './public/', './public/build/' ],
   },
 
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
+  },
+
   module: {
     rules: [
       { test: /\.scss$/,
