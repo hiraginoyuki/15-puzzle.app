@@ -1,5 +1,4 @@
-import { flip, range, chooseRandomIndex, chooseRandom } from '../utils';
-import { FifteenPuzzleRenderer } from './renderer';
+import { flip, range, chooseRandomIndex, chooseRandom } from './utils';
 import { EventEmitter } from 'events';
 
 const { floor, abs } = Math;
@@ -13,13 +12,11 @@ export class PointUtil {
   convertIndexToPoint(index: number): Point2D { return [index % this.columns, floor(index / this.columns)]; }
 }
 export class FifteenPuzzle extends EventEmitter {
-  static Renderer = FifteenPuzzleRenderer;
-
   static generateRandom(columns: number = 4, rows: number = columns) {
     const length = rows * columns;
     const numbers: number[] = [];
     const unusedNumbers = range(1, length);
-    for (const _ in range(length - 3)) {
+    for (const _ of range(length - 3)) {
       numbers.push(unusedNumbers.splice(chooseRandomIndex(unusedNumbers), 1)[0]);
     }
     let puzzle = new this([columns, rows], numbers.concat(unusedNumbers, 0));
@@ -35,7 +32,7 @@ export class FifteenPuzzle extends EventEmitter {
   public pointUtil: PointUtil;
   constructor(
     n: number | Point2D = 4,
-    private numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
+    public numbers: number[] = range(1, Array.isArray(n) ? n[0] * n[1] : n ** 2).concat(0),
   ) {
     super();
     if (Array.isArray(n)) [this.columns, this.rows] = n;
@@ -45,7 +42,6 @@ export class FifteenPuzzle extends EventEmitter {
   }
 
   get length() { return this.numbers.length; }
-  getNumbers() { return this.numbers; }
 
   clone() { return new (this.constructor as typeof FifteenPuzzle)([this.rows, this.columns], this.numbers.slice()); }
   equals(point1: Point2D, point2: Point2D) { return point1[0] === point2[0] && point1[1] === point2[1]; }
