@@ -8,7 +8,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  ({ url }) => /.*react.*\.js$/.test(url.pathname),
+  ({ url }) => url.host === 'unpkg.com',
   new workbox.strategies.CacheFirst({
     cacheName: 'assets',
   }),
