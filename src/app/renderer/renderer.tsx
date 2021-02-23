@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { FifteenPuzzle, Point2D } from '../../fifteen-puzzle';
-import { useForceUpdate, joinClassNames, range, isMobile, style, useComputedState, defineOnGlobal } from '../../utils';
+import { useForceUpdate, joinClassNames as join, range, isMobile, style, useComputedState, defineOnGlobal } from '../../utils';
 import styles from './renderer.scss';
 
 const keyMap = {
@@ -50,35 +50,41 @@ export function FifteenPuzzleRenderer() {
          style={style.var({ columns: puzzle.columns, rows: puzzle.rows })}
     >
       { range(puzzle.numbers.length).map((number) => {
-        const point = puzzle.getPointFromValue(number);
-        const index = puzzle.pointUtil.convertPointToIndex(point);
+        const coord = puzzle.getPointFromValue(number);
+        const index = puzzle.pointUtil.convertPointToIndex(coord);
         const isZero = number == 0;
         const isSolved = useComputedState(() => puzzle.isSolved());
-        return <Piece key={number} hidden={isZero && !isSolved.value} correct={number == index + 1}
-                      tapEvent={TAP_EVENT} onTap={isZero && isSolved.value ? reset : onTap}
-                      x={point[0]} y={point[1]}>
-          { isZero
-            ? <div className={styles.number}> R </div>
-            : <div className={styles.number}> {number} </div>
-          }
-        </Piece>;
+        const content = isZero
+                      ? <div className={styles.number}> R </div>
+                      : <div className={styles.number}> {number} </div>;
+        return (
+          <Piece key={number} hidden={isZero && !isSolved.value} correct={number == index + 1}
+                 tapEvent={TAP_EVENT} onTap={isZero && isSolved.value ? reset : onTap}
+                 coord={coord}>
+            { content }
+          </Piece>
+        );
       }) }
     </div>
   );
 }
 
 interface PieceProps {
-  x: number;
-  y: number;
+  coord: Point2D;
   hidden: boolean;
   tapEvent: "onTouchStart" | "onMouseDown";
   onTap(point: Point2D): any;
   key: string | number;
   correct: boolean;
 }
-function Piece({ x, y, hidden, tapEvent, onTap, key, correct, children }: PropsWithChildren<PieceProps>) {
-  return <div className={joinClassNames(styles.piece, correct && styles.correct, hidden && styles.hidden)}
-              style={style.var({ x, y })}
-              key={key}
-              {...{ [tapEvent]: () => onTap([x, y]) }}> { children } </div>;
+function Piece(props: PropsWithChildren<PieceProps>) {
+  return (
+    <div className={join(styles.piece,
+                         props.correct && styles.correct,
+                         props.hidden && styles.hidden)}
+         style={style.var({ x: props.coord[0], y: props.coord[1] })}
+         {...{ [props.tapEvent]: () => props.onTap(props.coord) }}>
+      { props.children }
+    </div>
+  );
 }
