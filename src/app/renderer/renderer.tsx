@@ -39,32 +39,35 @@ export function FifteenPuzzleRenderer() {
     if (Array.isArray(point)) onTap(point);
   }
 
-  useEffect(() => defineOnGlobal({ puzzle, setPuzzle, forceUpdate }));
   useEffect(() => {
     document.removeEventListener("keydown", listener.current!);
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
   }, [puzzle]);
 
+  defineOnGlobal({ puzzle, setPuzzle, forceUpdate });
+  
   return (
     <div className={styles.fifteenPuzzleRenderer}
          style={style.var({ columns: puzzle.columns, rows: puzzle.rows })}
     >
-      { range(puzzle.numbers.length).map((number) => {
-        const coord = puzzle.getPointFromValue(number);
-        const index = puzzle.pointUtil.convertPointToIndex(coord);
-        const isZero = number == 0;
-        const isSolved = useComputedState(() => puzzle.isSolved());
-        const content = isZero
-                      ? <div className={styles.number}> R </div>
-                      : <div className={styles.number}> {number} </div>;
-        return (
-          <Piece key={number} hidden={isZero && !isSolved.value} correct={number == index + 1}
-                 tapEvent={TAP_EVENT} onTap={isZero && isSolved.value ? reset : onTap}
-                 coord={coord}>
-            { content }
-          </Piece>
-        );
-      }) }
+      {
+        range(puzzle.numbers.length).map((number) => {
+          const coord = puzzle.getPointFromValue(number);
+          const index = puzzle.pointUtil.convertPointToIndex(coord);
+          const isZero = number == 0;
+          const isSolved = useComputedState(() => puzzle.isSolved());
+          const content = isZero
+                        ? <div className={styles.number}> R </div>
+                        : <div className={styles.number}> {number} </div>;
+          return (
+            <Piece hidden={isZero && !isSolved.value} correct={number == index + 1}
+                  tapEvent={TAP_EVENT} onTap={isZero && isSolved.value ? reset : onTap}
+                  coord={coord} key={number}>
+              { content }
+            </Piece>
+          );
+        })
+      }
     </div>
   );
 }
