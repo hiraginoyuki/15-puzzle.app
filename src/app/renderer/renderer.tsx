@@ -61,8 +61,8 @@ export function FifteenPuzzleRenderer() {
                         : <div className={styles.number}> {number} </div>;
           return (
             <Piece hidden={isZero && !isSolved.value} correct={number == index + 1}
-                  tapEvent={TAP_EVENT} onTap={isZero && isSolved.value ? reset : onTap}
-                  coord={coord} key={number}>
+                   tapEvent={TAP_EVENT} onTap={isZero && isSolved.value ? reset : onTap}
+                   coord={coord} key={number}>
               { content }
             </Piece>
           );
@@ -81,11 +81,12 @@ interface PieceProps {
   correct: boolean;
 }
 function Piece(props: PropsWithChildren<PieceProps>) {
+  const [x, y] = props.coord;
   return (
     <div className={join(styles.piece,
                          props.correct && styles.correct,
                          props.hidden && styles.hidden)}
-         style={style.var({ x: props.coord[0], y: props.coord[1] })}
+         style={style.var({ x, y })}
          {...{ [props.tapEvent]: () => props.onTap(props.coord) }}>
       { props.children }
     </div>
