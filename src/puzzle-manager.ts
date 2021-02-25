@@ -37,9 +37,6 @@ export class PuzzleManager {
   public started = false;
   public isSolved = false;
   private clean() {
-    if (this.puzzleInstance && this.puzzleInstance.isSolved()) {
-      this.gameHistory.push(this.gameInfo);
-    }
     this.started = false;
     this.isSolved = false;
     this.gameInfo = getNewGame();
@@ -78,6 +75,7 @@ export class PuzzleManager {
 
   private onSolve() {
     this.gameInfo.timeEnded = getTimestamp();
+    this.gameHistory.push(this.gameInfo);
   }
 
   public getNumbers() {

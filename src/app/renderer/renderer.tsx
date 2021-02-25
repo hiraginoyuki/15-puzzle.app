@@ -15,10 +15,12 @@ const keyMap = {
 const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 
 export function FifteenPuzzleRenderer() {
+  const forceUpdate = useForceUpdate();
   const { current: puzzleManager } = useRef(new PuzzleManager().generate());
   const { isSolved } = puzzleManager;
-  const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
+
+  puzzleManager.setOnUpdate(forceUpdate);
 
   defineOnGlobal({ puzzleManager, forceUpdate });
 
