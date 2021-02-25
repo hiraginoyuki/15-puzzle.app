@@ -1,5 +1,5 @@
 import React from "react";
-import { FifteenPuzzle } from "../fifteen-puzzle";
+import { FifteenPuzzle } from "15-puzzle";
 import { FifteenPuzzleRenderer } from "./renderer";
 import { FlexCenteringContainer, defineOnGlobal } from "../utils";
 import styles from './app.scss';
