@@ -37,7 +37,7 @@ export class PuzzleManager {
   public started = false;
   public isSolved = false;
   private clean() {
-    if (this.puzzleInstance.isSolved()) {
+    if (this.puzzleInstance && this.puzzleInstance.isSolved()) {
       this.gameHistory.push(this.gameInfo);
     }
     this.started = false;
