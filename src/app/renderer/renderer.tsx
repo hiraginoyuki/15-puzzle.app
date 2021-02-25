@@ -19,7 +19,7 @@ function forceSolve(puzzle: FifteenPuzzle): FifteenPuzzle {
 defineOnGlobal({ forceSolve });
 
 export function FifteenPuzzleRenderer() {
-  const [ puzzle, setPuzzle ] = useState(FifteenPuzzle.generateRandom(4));
+  const [puzzle, setPuzzle] = useState(FifteenPuzzle.generateRandom(4));
   const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
   const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
