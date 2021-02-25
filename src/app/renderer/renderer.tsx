@@ -1,7 +1,9 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { FifteenPuzzle, Point2D } from '../../fifteen-puzzle';
+import { FifteenPuzzle } from '15-puzzle';
 import { useForceUpdate, joinClassNames as join, range, isMobile, style, useComputedState, defineOnGlobal } from '../../utils';
 import styles from './renderer.scss';
+
+type Point2D = [number, number];
 
 const keyMap = {
   4:[0,0], 5:[1,0], 6:[2,0], 7:[3,0],

@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HiraginoYuki/fifteen-puzzle"
+    "url": "https://github.com/HiraginoYuki/15-puzzle.app"
   },
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "15-puzzle": "^1.0.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-transition-group": "^4.4.0",
