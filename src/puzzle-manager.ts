@@ -57,6 +57,7 @@ export class PuzzleManager {
     this.gameInfo.timeGenerated = timestamp;
     this.gameInfo.seed = seed;
     this.updateSolvedState();
+    this.onUpdate();
     return this;
   }
 
@@ -92,5 +93,6 @@ export class PuzzleManager {
   public forceSolve() {
     const puzzle = this.puzzleInstance;
     puzzle.numbers = [...Array(puzzle.columns * puzzle.rows - 1)].map((_, i) => i + 1).concat(0);
+    this.onUpdate();
   }
 }
