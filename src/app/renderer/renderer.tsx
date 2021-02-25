@@ -30,14 +30,12 @@ export function FifteenPuzzleRenderer() {
 
   function onTap(point: Point2D) {
     puzzleManager.tap(point);
-    console.log("tapped", point);
     forceUpdate();
   };
 
   function onKeyDown(key: string) {
     if (key == " ") reset();
     const point = keyMap[key];
-    console.log(key, point);
     if (Array.isArray(point)) onTap(point);
   }
 
