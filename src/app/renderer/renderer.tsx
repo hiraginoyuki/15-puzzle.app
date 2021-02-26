@@ -21,7 +21,10 @@ export function FifteenPuzzleRenderer() {
   const { isSolved } = puzzleManager;
   const { columns, rows } = puzzleManager.puzzleInstance;
 
-  useEffect(() => puzzleManager.connect());
+  useEffect(() => {
+    puzzleManager.connect();
+    console.log("WSDTWEQQ");
+  }, []);
 
   puzzleManager.setOnUpdate(forceUpdate);
 

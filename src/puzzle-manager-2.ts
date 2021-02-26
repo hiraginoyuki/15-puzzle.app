@@ -10,11 +10,11 @@ export class PuzzleManager {
   public socket: Socket;
   public constructor(private onUpdate: () => any = () => {}) {
     this.clean();
-    this.puzzleInstance = FifteenPuzzle.generateRandom();
+    this.puzzleInstance = new FifteenPuzzle();
   }
 
 	public connect() {
-    this.socket = io("http://kazukazu123123.f5.si");
+    this.socket = io("kazukazu123123.f5.si");
     this.socket.on("puzzle", (arr: number[]) => {
       this.puzzleInstance.numbers = arr;
       this.updateSolvedState();
@@ -46,6 +46,7 @@ export class PuzzleManager {
     if (this.isSolved) return false;
     const succeeded = this.puzzleInstance.tap(coord);
     if (!succeeded) return false;
+		this.socket.emit("tap", coord);
     this.updateSolvedState();
     this.onUpdate();
     return true;
