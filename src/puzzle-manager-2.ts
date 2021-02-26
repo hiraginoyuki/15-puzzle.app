@@ -4,19 +4,33 @@ import { io, Socket } from 'socket.io-client';
 
 type Point2D = [number, number];
 
+class FifteeenPuzzle extends FifteenPuzzle {
+	public columns: number;
+	public rows: number;
+	public pointUtil = {
+		convertPointToIndex: (point: Point2D) => point[0] + point[1] * this.columns,
+		convertIndexToPoint: (index: number) => [index % this.columns, Math.floor(index / this.columns)],
+	} as FifteenPuzzle["pointUtil"];
+	public constructor(n?: number | Point2D, numbers?: number[]) {
+		super(n, numbers);
+	}
+}
+
 export class PuzzleManager {
-  public puzzleInstance: FifteenPuzzle;
+  public puzzleInstance: FifteeenPuzzle;
 
   public socket: Socket;
   public constructor(private onUpdate: () => any = () => {}) {
     this.clean();
-    this.puzzleInstance = new FifteenPuzzle();
+    this.puzzleInstance = new FifteeenPuzzle();
   }
 
 	public connect() {
     this.socket = io("kazukazu123123.f5.si");
-    this.socket.on("puzzle", (arr: number[]) => {
+    this.socket.on("puzzle", (arr: number[], columns: number) => {
       this.puzzleInstance.numbers = arr;
+			this.puzzleInstance.columns = columns;
+			this.puzzleInstance.rows = arr.length / columns;
       this.updateSolvedState();
       this.onUpdate();
     });
