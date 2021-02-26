@@ -23,7 +23,6 @@ export function FifteenPuzzleRenderer() {
 
   useEffect(() => {
     puzzleManager.connect();
-    console.log("WSDTWEQQ");
   }, []);
 
   puzzleManager.setOnUpdate(forceUpdate);
