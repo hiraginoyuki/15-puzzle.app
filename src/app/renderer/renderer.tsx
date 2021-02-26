@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import { useForceUpdate, joinClassNames as join, isMobile, style, defineOnGlobal } from '../../utils';
 import styles from './renderer.scss';
-import { PuzzleManager } from '../../puzzle-manager-2';
+import { PuzzleManager } from '../../puzzle-manager';
 
 type Point2D = [number, number];
 
@@ -16,9 +16,10 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
+  const listener = useRef<(event: KeyboardEvent) => any>();
   const { current: puzzleManager } = useRef(new PuzzleManager().generate());
   const { isSolved } = puzzleManager;
-  const listener = useRef<(event: KeyboardEvent) => any>();
+  const { columns, rows } = puzzleManager.puzzleInstance;
 
   puzzleManager.setOnUpdate(forceUpdate);
 
@@ -44,12 +45,8 @@ export function FifteenPuzzleRenderer() {
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
   });
 
-  const { columns, rows } = puzzleManager.puzzleInstance;
-  
   return (
-    <div className={styles.fifteenPuzzleRenderer}
-         style={style.var({ columns, rows })}
-    >
+    <div className={styles.fifteenPuzzleRenderer} style={style.var({ columns, rows })}>
       {
         puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => {
           const isZero = number == 0;
@@ -71,11 +68,11 @@ export function FifteenPuzzleRenderer() {
 
 interface PieceProps {
   coord: Point2D;
-  hidden: boolean;
   tapEvent: "onTouchStart" | "onMouseDown";
   onTap(point: Point2D): any;
   key: string | number;
   correct: boolean;
+  hidden: boolean;
 }
 function Piece(props: PropsWithChildren<PieceProps>) {
   const [x, y] = props.coord;

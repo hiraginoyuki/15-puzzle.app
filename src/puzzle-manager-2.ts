@@ -49,7 +49,7 @@ export class PuzzleManager {
 
   public getNumbers() {
     const puzzle = this.puzzleInstance;
-    return range(1, puzzle.columns * puzzle.rows)
+    return range(puzzle.columns * puzzle.rows)
       .map(number => {
         const coord = puzzle.getPointFromValue(number);
         const index = puzzle.pointUtil.convertPointToIndex(coord);
