@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, style, defineOnGlobal } from '../../utils';
+import { useForceUpdate, joinClassNames as join, isMobile, style, defineOnGlobal, useConstant } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager } from '../../puzzle-manager';
 
@@ -17,7 +17,7 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
-  const { current: puzzleManager } = useRef(new PuzzleManager().generate());
+  const puzzleManager = useConstant(() => new PuzzleManager().generate());
   const { isSolved } = puzzleManager;
   const { columns, rows } = puzzleManager.puzzleInstance;
 
