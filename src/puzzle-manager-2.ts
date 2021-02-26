@@ -11,13 +11,16 @@ export class PuzzleManager {
   public constructor(private onUpdate: () => any = () => {}) {
     this.clean();
     this.puzzleInstance = FifteenPuzzle.generateRandom();
+  }
+
+	public connect() {
     this.socket = io("http://kazukazu123123.f5.si");
     this.socket.on("puzzle", (arr: number[]) => {
       this.puzzleInstance.numbers = arr;
       this.updateSolvedState();
       this.onUpdate();
     });
-  }
+	}
 
   public setOnUpdate(onUpdate: () => any): this {
     this.onUpdate = onUpdate;

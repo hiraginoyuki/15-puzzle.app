@@ -17,16 +17,11 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
-  const puzzleManagerRef = useRef<PuzzleManager>({} as PuzzleManager);
-  const { current: puzzleManager } = puzzleManagerRef;
+  const { current: puzzleManager } = useRef(new PuzzleManager());
   const { isSolved } = puzzleManager;
   const { columns, rows } = puzzleManager.puzzleInstance;
 
-  useEffect(() => {
-    puzzleManagerRef.current = new PuzzleManager;
-  }, [])
-
-  if (!puzzleManager) return <></>;
+  useEffect(() => puzzleManager.connect());
 
   puzzleManager.setOnUpdate(forceUpdate);
 
