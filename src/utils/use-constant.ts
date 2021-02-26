@@ -1,4 +1,3 @@
-import { constant } from "case";
 import { useRef } from "react";
 
 export function useConstant<T>(getConstant: () => T) {
