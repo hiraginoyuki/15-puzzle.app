@@ -6,7 +6,7 @@ interface TapData {
   time: number;
   coord: Point2D;
 }
-interface Game {
+interface Score {
   timeGenerated: number;
   timeStarted: number | null;
   timeSolved: number | null;
@@ -18,30 +18,14 @@ interface Game {
 const getUnixTimestamp = () => +new Date;
 
 export class PuzzleManager {
-  public gameHistory: Game[] = [];
-  public currentGame: Game;
+  public scoreHistory: Score[] = [];
+  public currentScore: Score
   public currentPuzzle: FifteenPuzzle;
 
-  public get started() { return this.currentGame.timeStarted !== null; }
-  public get isSolved() { return this.currentGame.timeSolved !== null; }
+  public get started() { return this.currentScore.timeStarted !== null; }
+  public get isSolved() { return this.currentScore.timeSolved !== null; }
 
-  public externalOnUpdate: () => any = () => {};
-  public setOnUpdate(onUpdate: () => any): this {
-    this.externalOnUpdate = onUpdate;
-    return this;
-  }
-
-  public onUpdate() {
-    if (this.currentPuzzle.isSolved()) this.onSolve();
-    this.externalOnUpdate();
-  }
-
-  private onSolve() {
-    this.gameHistory.push(this.currentGame);
-    this.currentGame.timeSolved = getUnixTimestamp();
-  }
-
-  private newGame(timeGenerated: number, columns = 4, rows = columns): Game {
+  private newGame(timeGenerated: number, columns = 4, rows = columns): Score {
     return {
       timeGenerated,
       timeStarted: null,
@@ -52,8 +36,7 @@ export class PuzzleManager {
       taps: [],
     };
   }
-
-  private newTapData(coord: Point2D, time: number): TapData {
+  private createTapData(coord: Point2D, time: number): TapData {
     return { coord, time };
   }
 
@@ -61,15 +44,25 @@ export class PuzzleManager {
     this.reset();
   }
 
-  public reset(): this { // TODO
-    if (!this.gameHistory[this.gameHistory.length - 1])
-      this.gameHistory.push(this.currentGame);
-    this.currentGame = this.newGame(getUnixTimestamp());
+  public onUpdate: () => any = () => {};
+  public setOnUpdate(onUpdate: () => any): this {
+    this.onUpdate = onUpdate;
+    return this;
+  }
+
+  private onSolve() {
+    this.scoreHistory.push(this.currentScore);
+    this.currentScore.timeSolved = getUnixTimestamp();
+  }
+
+  public reset(): this {
+    this.currentScore = this.newGame(getUnixTimestamp());
     this.currentPuzzle = FifteenPuzzle.generateRandom(
-      this.currentGame.seed,
-      this.currentGame.columns,
-      this.currentGame.rows
+      this.currentScore.seed,
+      this.currentScore.columns,
+      this.currentScore.rows
     );
+    this.scoreHistory.push(this.currentScore);
     this.onUpdate();
     return this;
   }
@@ -87,16 +80,19 @@ export class PuzzleManager {
   public tap(coord: Point2D): boolean {
     if (this.isSolved) return false;
     if (!this.currentPuzzle.tap(coord)) return false;
-    if (!this.started) this.currentGame.timeStarted = getUnixTimestamp();
-    this.currentGame.taps.push(this.newTapData(coord, getUnixTimestamp() - this.currentGame.timeStarted!));
+    if (!this.started) this.currentScore.timeStarted = getUnixTimestamp();
+    this.currentScore.taps.push(this.createTapData(coord, getUnixTimestamp() - this.currentScore.timeStarted!));
+    if (this.currentPuzzle.isSolved()) this.onSolve();
     this.onUpdate();
     return true;
   }
-  
+
   public forceSolve() {
     if (this.isSolved) return;
     const puzzle = this.currentPuzzle;
     puzzle.numbers = range(1, puzzle.columns * puzzle.rows).concat(0);
+    this.onSolve();
     this.onUpdate();
+    return this;
   }
 }
