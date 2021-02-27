@@ -17,28 +17,23 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
-  const puzzleManager = useConstant(() => new PuzzleManager().generate());
+  const puzzleManager = useConstant(() => new PuzzleManager());
   const { isSolved } = puzzleManager;
-  const { columns, rows } = puzzleManager.puzzleInstance;
-
-  puzzleManager.setOnUpdate(forceUpdate);
+  const { columns, rows } = puzzleManager.currentPuzzle;
 
   defineOnGlobal({ puzzleManager, forceUpdate });
 
-  function reset() {
-    puzzleManager.generate();
-  }
+  puzzleManager.setOnUpdate(forceUpdate);
 
-  function onTap(point: Point2D) {
-    puzzleManager.tap(point);
-    forceUpdate();
-  };
-
+  const reset = () => puzzleManager.reset();
+  const onTap = (point: Point2D) => puzzleManager.tap(point);
   function onKeyDown(key: string) {
     if (key == " ") reset();
-    const point = keyMap[key];
+    const point = keyMap[key.toLowerCase()];
     if (Array.isArray(point)) onTap(point);
   }
+
+  console.log("render");
 
   useEffect(() => {
     document.removeEventListener("keydown", listener.current!);
@@ -49,6 +44,7 @@ export function FifteenPuzzleRenderer() {
     <div className={styles.fifteenPuzzleRenderer} style={style.var({ columns, rows })}>
       {
         puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => {
+          console.log("wo")
           const isZero = number == 0;
           const content = isZero
                         ? <div className={styles.number}> R </div>

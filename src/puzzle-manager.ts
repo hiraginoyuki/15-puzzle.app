@@ -2,84 +2,83 @@ import { FifteenPuzzle } from "15-puzzle";
 import { range } from "./utils";
 
 type Point2D = [number, number];
-
+interface TapData {
+  time: number;
+  coord: Point2D;
+}
 interface Game {
   timeGenerated: number;
-  timeStarted: number;
-  timeEnded: number;
+  timeStarted: number | null;
+  timeSolved: number | null;
   seed: string;
-  taps: Point2D[];
+  columns: number;
+  rows: number;
+  taps: TapData[];
 }
-
-function getTimestamp() {
-  return +new Date;
-}
-  
-function getNewGame() {
-  return { taps: [] } as any as Game;
-}
+const getUnixTimestamp = () => +new Date;
 
 export class PuzzleManager {
-  public gameHistory: Game[];
-  public gameInfo: Game;
-  public puzzleInstance: FifteenPuzzle;
+  public gameHistory: Game[] = [];
+  public currentGame: Game;
+  public currentPuzzle: FifteenPuzzle;
 
-  public constructor(private onUpdate: () => any = () => {}) {
-    this.gameHistory = [];
-    this.clean();
-  }
+  public get started() { return this.currentGame.timeStarted !== null; }
+  public get isSolved() { return this.currentGame.timeSolved !== null; }
 
+  public externalOnUpdate: () => any = () => {};
   public setOnUpdate(onUpdate: () => any): this {
-    this.onUpdate = onUpdate;
-    return this;
-  }
-  
-  public started = false;
-  public isSolved = false;
-  private clean() {
-    this.started = false;
-    this.isSolved = false;
-    this.gameInfo = getNewGame();
-  }
-
-  private updateSolvedState() {
-    this.isSolved = this.puzzleInstance.isSolved();
-  }
-
-  public generate(): this {
-    this.clean();
-    const timestamp = getTimestamp();
-    const seed = `${timestamp}`;
-    this.puzzleInstance = FifteenPuzzle.generateRandom(seed);
-    this.gameInfo.timeGenerated = timestamp;
-    this.gameInfo.seed = seed;
-    this.updateSolvedState();
-    this.onUpdate();
+    this.externalOnUpdate = onUpdate;
     return this;
   }
 
-  public tap(coord: Point2D): boolean {
-    if (this.isSolved) return false;
-    const succeeded = this.puzzleInstance.tap(coord);
-    if (!succeeded) return false;
-    if (!this.started) {
-      this.started = true;
-      this.gameInfo.timeStarted = getTimestamp();
-    }
-    this.gameInfo.taps.push(coord);
-    this.updateSolvedState();
+  public onUpdate() {
     if (this.isSolved) this.onSolve();
-    this.onUpdate();
-    return true;
+    this.externalOnUpdate();
   }
 
   private onSolve() {
-    this.gameInfo.timeEnded = getTimestamp();
-    this.gameHistory.push(this.gameInfo);
+    this.gameHistory.push(this.currentGame);
+    this.currentGame.timeSolved = getUnixTimestamp();
+  }
+
+  private newGame(timeGenerated: number, columns = 4, rows = columns): Game {
+    return {
+      timeGenerated,
+      timeStarted: null,
+      timeSolved: null,
+      seed: `${timeGenerated}`,
+      columns,
+      rows,
+      taps: [],
+    };
+  }
+
+  private newTapData(coord: Point2D, time?: number): TapData {
+    return {
+      coord,
+      time: typeof time == "number" ? time : getUnixTimestamp()
+    };
+  }
+
+  public constructor() {
+    this.reset();
+  }
+
+  public reset(): this { // TODO
+    if (!this.gameHistory[this.gameHistory.length - 1])
+      this.gameHistory.push(this.currentGame);
+    this.currentGame = this.newGame(getUnixTimestamp());
+    this.currentPuzzle = FifteenPuzzle.generateRandom(
+      this.currentGame.seed,
+      this.currentGame.columns,
+      this.currentGame.rows
+    );
+    this.onUpdate();
+    return this;
   }
 
   public getNumbers() {
-    const puzzle = this.puzzleInstance;
+    const puzzle = this.currentPuzzle;
     return range(puzzle.columns * puzzle.rows)
       .map(number => {
         const coord = puzzle.getPointFromValue(number);
@@ -87,10 +86,19 @@ export class PuzzleManager {
         return { coord, number, isCorrect: number == index + 1 };
       });
   }
-
+  public tap(coord: Point2D): boolean {
+    if (this.isSolved) return false;
+    if (!this.currentPuzzle.tap(coord)) return false;
+    if (!this.started) this.currentGame.timeStarted = getUnixTimestamp();
+    this.currentGame.taps.push(this.newTapData(coord));
+    this.onUpdate();
+    return true;
+  }
+  
   public forceSolve() {
-    const puzzle = this.puzzleInstance;
-    puzzle.numbers = [...Array(puzzle.columns * puzzle.rows - 1)].map((_, i) => i + 1).concat(0);
+    if (this.isSolved) return;
+    const puzzle = this.currentPuzzle;
+    puzzle.numbers = range(0, puzzle.columns * puzzle.rows).concat(0);
     this.onUpdate();
   }
 }
