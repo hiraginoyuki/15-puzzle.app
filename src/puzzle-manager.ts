@@ -53,11 +53,8 @@ export class PuzzleManager {
     };
   }
 
-  private newTapData(coord: Point2D, time?: number): TapData {
-    return {
-      coord,
-      time: typeof time == "number" ? time : getUnixTimestamp()
-    };
+  private newTapData(coord: Point2D, time: number): TapData {
+    return { coord, time };
   }
 
   public constructor() {
@@ -91,7 +88,7 @@ export class PuzzleManager {
     if (this.isSolved) return false;
     if (!this.currentPuzzle.tap(coord)) return false;
     if (!this.started) this.currentGame.timeStarted = getUnixTimestamp();
-    this.currentGame.taps.push(this.newTapData(coord));
+    this.currentGame.taps.push(this.newTapData(coord, getUnixTimestamp() - this.currentGame.timeStarted!));
     this.onUpdate();
     return true;
   }
