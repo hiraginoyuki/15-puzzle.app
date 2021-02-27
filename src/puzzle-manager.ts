@@ -32,7 +32,7 @@ export class PuzzleManager {
   }
 
   public onUpdate() {
-    if (this.isSolved) this.onSolve();
+    if (this.currentPuzzle.isSolved()) this.onSolve();
     this.externalOnUpdate();
   }
 

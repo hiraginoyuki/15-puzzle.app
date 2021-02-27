@@ -46,6 +46,7 @@ export function FifteenPuzzleRenderer() {
           const content = isZero
                         ? <div className={styles.number}> R </div>
                         : <div className={styles.number}> {number} </div>;
+          if (isZero) console.log(isZero && !isSolved);
           return (
             <Piece hidden={isZero && !isSolved} correct={isCorrect}
                    tapEvent={TAP_EVENT} onTap={isZero && isSolved ? reset : onTap}
