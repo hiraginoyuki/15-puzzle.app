@@ -33,8 +33,6 @@ export function FifteenPuzzleRenderer() {
     if (Array.isArray(point)) onTap(point);
   }
 
-  console.log("render");
-
   useEffect(() => {
     document.removeEventListener("keydown", listener.current!);
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
@@ -44,7 +42,6 @@ export function FifteenPuzzleRenderer() {
     <div className={styles.fifteenPuzzleRenderer} style={style.var({ columns, rows })}>
       {
         puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => {
-          console.log("wo")
           const isZero = number == 0;
           const content = isZero
                         ? <div className={styles.number}> R </div>
