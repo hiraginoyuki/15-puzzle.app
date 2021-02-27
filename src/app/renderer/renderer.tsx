@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
 import { useForceUpdate, joinClassNames as join, isMobile, style, defineOnGlobal } from '../../utils';
 import styles from './renderer.scss';
-import { PuzzleManager } from '../../puzzle-manager';
+import { PuzzleManager } from '../../puzzle-manager-2';
 
 type Point2D = [number, number];
 
