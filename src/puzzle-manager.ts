@@ -86,6 +86,7 @@ export class PuzzleManager {
         return { coord, number, isCorrect: number == index + 1 };
       });
   }
+
   public tap(coord: Point2D): boolean {
     if (this.isSolved) return false;
     if (!this.currentPuzzle.tap(coord)) return false;
