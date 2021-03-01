@@ -1,5 +1,5 @@
-import React, { PropsWithChildren, useEffect, useRef } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, style, defineOnGlobal, useConstant } from '../../utils';
+import React, { CSSProperties, PropsWithChildren, useEffect, useRef } from 'react';
+import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, useConstant } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager } from '../../puzzle-manager';
 
@@ -39,7 +39,7 @@ export function FifteenPuzzleRenderer() {
   });
 
   return (
-    <div className={styles.fifteenPuzzleRenderer} style={style.var({ columns, rows })}>
+    <div className={styles.fifteenPuzzleRenderer} style={{ "--columns": columns, "--rows": rows } as CSSProperties}>
       {
         puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => {
           const isZero = number == 0;
@@ -72,7 +72,7 @@ function Piece(props: PropsWithChildren<PieceProps>) {
     <div className={join(styles.piece,
                          props.correct && styles.correct,
                          props.hidden && styles.hidden)}
-         style={style.var({ x, y })}
+         style={{ "--x": x, "--y": y } as CSSProperties}
          {...{ [props.tapEvent]: () => props.onTap(props.coord) }}>
       { props.children }
     </div>
