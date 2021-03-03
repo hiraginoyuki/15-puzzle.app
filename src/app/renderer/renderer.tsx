@@ -17,13 +17,9 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
-  const puzzleManager = useConstant(() => new PuzzleManager());
+  const puzzleManager = useConstant(() => new PuzzleManager(forceUpdate));
   const { isSolved } = puzzleManager;
   const { columns, rows } = puzzleManager.currentPuzzle;
-
-  defineOnGlobal({ puzzleManager, forceUpdate });
-
-  puzzleManager.setOnUpdate(forceUpdate);
 
   const reset = () => puzzleManager.reset();
   const onTap = (point: Point2D) => puzzleManager.tap(point);
@@ -34,6 +30,7 @@ export function FifteenPuzzleRenderer() {
   }
 
   useEffect(() => {
+    defineOnGlobal({ puzzleManager, forceUpdate });
     document.removeEventListener("keydown", listener.current!);
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
   });
