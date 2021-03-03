@@ -31,6 +31,9 @@ export function FifteenPuzzleRenderer() {
 
   useEffect(() => {
     defineOnGlobal({ puzzleManager, forceUpdate });
+  }, []);
+
+  useEffect(() => {
     document.removeEventListener("keydown", listener.current!);
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
   });
