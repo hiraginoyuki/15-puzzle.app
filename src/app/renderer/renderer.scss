@@ -3,7 +3,6 @@
   -webkit-user-select: none;
   width: calc(80px * var(--columns));
   height: calc(80px * var(--rows));
-  transform: scale(1.7);
 
   > .piece {
     --width: 80px;
