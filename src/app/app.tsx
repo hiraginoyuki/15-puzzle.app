@@ -10,6 +10,8 @@ export function App() {
     <FlexCenteringContainer>
       <FifteenPuzzleRenderer />
     </FlexCenteringContainer>
-    <div className={styles.name}>Made by Yuki Hiragino</div>
+    <div className={styles.credit}>
+      <a href="https://github.com/HiraginoYuki/15-puzzle.app"> Made by Yuki Hiragino </a>
+    </div>
   </>;
 }
