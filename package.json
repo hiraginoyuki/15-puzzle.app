@@ -17,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "case": "^1.6.3",
     "15-puzzle": "^2.0.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",

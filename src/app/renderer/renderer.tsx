@@ -1,5 +1,5 @@
-import React, { PropsWithChildren, useEffect, useRef } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, style, defineOnGlobal, useConstant } from '../../utils';
+import React, { CSSProperties, PropsWithChildren, useEffect, useMemo, useRef } from 'react';
+import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager } from '../../puzzle-manager';
 
@@ -17,13 +17,9 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
   const listener = useRef<(event: KeyboardEvent) => any>();
-  const puzzleManager = useConstant(() => new PuzzleManager());
+  const puzzleManager = useMemo(() => new PuzzleManager(forceUpdate), []);
   const { isSolved } = puzzleManager;
   const { columns, rows } = puzzleManager.currentPuzzle;
-
-  defineOnGlobal({ puzzleManager, forceUpdate });
-
-  puzzleManager.setOnUpdate(forceUpdate);
 
   const reset = () => puzzleManager.reset();
   const onTap = (point: Point2D) => puzzleManager.tap(point);
@@ -34,12 +30,16 @@ export function FifteenPuzzleRenderer() {
   }
 
   useEffect(() => {
+    defineOnGlobal({ puzzleManager, forceUpdate });
+  }, []);
+
+  useEffect(() => {
     document.removeEventListener("keydown", listener.current!);
     document.addEventListener("keydown", listener.current = ({ key }) => onKeyDown(key));
   });
 
   return (
-    <div className={styles.fifteenPuzzleRenderer} style={style.var({ columns, rows })}>
+    <div className={styles.fifteenPuzzleRenderer} style={{ "--columns": columns, "--rows": rows } as CSSProperties}>
       {
         puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => {
           const isZero = number == 0;
@@ -72,7 +72,7 @@ function Piece(props: PropsWithChildren<PieceProps>) {
     <div className={join(styles.piece,
                          props.correct && styles.correct,
                          props.hidden && styles.hidden)}
-         style={style.var({ x, y })}
+         style={{ "--x": x, "--y": y } as CSSProperties}
          {...{ [props.tapEvent]: () => props.onTap(props.coord) }}>
       { props.children }
     </div>

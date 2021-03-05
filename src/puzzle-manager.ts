@@ -15,7 +15,7 @@ interface Score {
   rows: number;
   taps: TapData[];
 }
-const getUnixTimestamp = () => +new Date;
+function getUnixTimestamp() { return +new Date; }
 
 export class PuzzleManager {
   public scoreHistory: Score[] = [];
@@ -40,14 +40,10 @@ export class PuzzleManager {
     return { coord, time };
   }
 
-  public constructor() {
+  public constructor(
+    public onUpdate: () => any = () => {}
+  ) {
     this.reset();
-  }
-
-  public onUpdate: () => any = () => {};
-  public setOnUpdate(onUpdate: () => any): this {
-    this.onUpdate = onUpdate;
-    return this;
   }
 
   private onSolve() {
