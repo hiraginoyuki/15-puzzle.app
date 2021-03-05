@@ -1,4 +1,4 @@
-.name {
+.credit {
   user-select: none;
   -webkit-user-select: none;
   position: fixed;
@@ -7,4 +7,9 @@
   margin: 8px 10px;
   font-size: 14px;
   color: #777;
+  > a {
+    transition: 0.1s color cubic-bezier(0, 0.55, 0.45, 1);
+    color: inherit;
+    &:hover { color: #888 }
+  }
 }
