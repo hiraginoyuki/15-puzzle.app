@@ -50,12 +50,7 @@ export function FifteenPuzzleRenderer() {
 
   const listeners = range(columns * rows).map(index => (
     <div className={styles.listener} key={index}
-         {...{ [TAP_EVENT]: () => {
-           console.log("nooooo");
-           onTap(pointUtil.convertIndexToPoint(index));
-         }}}>
-      test
-    </div>
+         {...{ [TAP_EVENT]: () => onTap(pointUtil.convertIndexToPoint(index))}}></div>
   ));
 
   return (
