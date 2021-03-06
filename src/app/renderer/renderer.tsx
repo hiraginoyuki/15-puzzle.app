@@ -22,7 +22,7 @@ export function FifteenPuzzleRenderer() {
 
   const reset = useCallback(() => puzzleManager.reset(), [puzzleManager]);
   const onTap = useCallback((point: Point2D) => (
-    (puzzleManager.isSolved && point[0] == 0 && point[1] == 0)
+    (puzzleManager.isSolved && point[0] == columns - 1 && point[1] == rows - 1)
       ? reset()
       : puzzleManager.tap(point)
   ), [puzzleManager, reset]);
