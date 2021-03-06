@@ -4,16 +4,17 @@
   width: calc(80px * var(--columns));
   height: calc(80px * var(--rows));
 
-  > .piece {
-    --width: 80px;
-    --height: 80px;
-    --margin: 0.05;
+  --width: 80px;
+  --height: 80px;
+  --margin: 0.05;
+  transform: scale(1.7);
 
+  > .piece {
     display: flex;
     position: absolute;
-    width: calc(var(--width) * (1 - var(--margin)));
-    height: calc(var(--height) * (1 - var(--margin)));
-    margin: calc(var(--height) * var(--margin)) calc(var(--width) * var(--margin));
+    width: 76px;
+    height: 76px;
+    margin: 2px;
     transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );
     border-radius: 5px;
     background-color: #111;
@@ -23,9 +24,20 @@
               , .2s filter var(--easeOutCirc);
     &.hidden { opacity: 0; }
     &.correct { filter: invert(100%); }
-    > .number {
+    > .content {
       margin: auto;
       font-size: 28pt;
+    }
+    z-index: 0;
+  }
+
+  > .tapListeners {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    > .listener {
+      z-index: 1;
     }
   }
 }
