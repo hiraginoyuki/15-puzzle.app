@@ -84,7 +84,7 @@ export class PuzzleManager {
   }
 
   public forceSolve() {
-    if (this.isSolved) return;
+    if (this.isSolved) return this;
     const puzzle = this.currentPuzzle;
     puzzle.numbers = range(1, puzzle.columns * puzzle.rows).concat(0);
     this.onSolve();
