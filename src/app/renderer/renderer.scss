@@ -11,9 +11,9 @@
   > .piece {
     display: flex;
     position: absolute;
-    width: 76px;
-    height: 76px;
-    margin: 2px;
+    width: calc(var(--width) * (1 - var(--margin)));
+    height: calc(var(--height) * (1 - var(--margin)));
+    margin: calc(var(--height) * var(--margin)) calc(var(--width) * var(--margin));
     transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );
     border-radius: 5px;
     background-color: #111;
