@@ -24,21 +24,16 @@ export function FifteenPuzzleRenderer() {
   const onTap = useCallback((point: Point2D) => (
     (puzzleManager.isSolved && point[0] == columns - 1 && point[1] == rows - 1)
       ? reset()
-      : puzzleManager.tap(point)
-  ), [puzzleManager, reset]);
+      : puzzleManager.tap(point)),
+    [puzzleManager, reset]);
   const onKeyDown = useCallback((key: string) => {
     if (key == " ") reset();
     const point = keyMap[key.toLowerCase()];
     if (Array.isArray(point)) onTap(point);
   }, [onTap]);
 
-  useEffect(() => {
-    defineOnGlobal({ puzzleManager, forceUpdate });
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("keydown", ({ key }) => onKeyDown(key));
-  }, [onKeyDown]);
+  useEffect(() => document.addEventListener("keydown", ({ key }) => onKeyDown(key)), [onKeyDown]);
+  useEffect(() => defineOnGlobal({ puzzleManager, forceUpdate }), []);
 
   const pieces = puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => (
     <Piece hidden={number == 0 && !isSolved} correct={isCorrect} coord={coord} key={number}>
@@ -49,13 +44,13 @@ export function FifteenPuzzleRenderer() {
   ));
 
   const listeners = range(columns * rows).map(index => (
-    <div className={styles.listener} key={index}
-         {...{ [TAP_EVENT]: () => onTap(pointUtil.convertIndexToPoint(index))}}></div>
+    <div {...{ [TAP_EVENT]: () => onTap(pointUtil.convertIndexToPoint(index))}}
+         className={styles.listener} key={index}></div>
   ));
 
   return (
-    <div className={styles.fifteenPuzzleRenderer}
-         style={{ "--columns": columns, "--rows": rows } as CSSProperties}>
+    <div style={{ "--columns": columns, "--rows": rows } as CSSProperties}
+         className={styles.fifteenPuzzleRenderer}>
       { pieces }
       <div className={styles.tapListeners} aria-hidden>
         { listeners }
@@ -72,10 +67,10 @@ interface PieceProps {
 function Piece(props: PropsWithChildren<PieceProps>) {
   const [x, y] = props.coord;
   return (
-    <div className={join(styles.piece,
+    <div style={{ "--x": x, "--y": y } as CSSProperties}
+         className={join(styles.piece,
                          props.correct && styles.correct,
-                         props.hidden && styles.hidden)}
-         style={{ "--x": x, "--y": y } as CSSProperties}>
+                         props.hidden && styles.hidden)}>
       { props.children }
     </div>
   );
