@@ -24,6 +24,7 @@ export class PuzzleManager {
 
   public get started() { return this.currentScore.timeStarted !== null; }
   public get isSolved() { return this.currentScore.timeSolved !== null; }
+  public get isSolving() { return this.started && !this.isSolved; }
 
   private newGame(timeGenerated: number, columns = 4, rows = columns): Score {
     return {

@@ -1,5 +1,5 @@
-import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
+import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react';
+import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range, useOnKeyDown } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager } from '../../puzzle-manager';
 
@@ -16,29 +16,37 @@ const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 
 export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
+  const [ isConfirming, setConfirming ] = useState(false);
   const puzzleManager = useMemo(() => new PuzzleManager(forceUpdate), []);
-  const { isSolved, currentPuzzle } = puzzleManager;
+  const { isSolving, isSolved, currentPuzzle } = puzzleManager;
   const { columns, rows, pointUtil } = currentPuzzle;
 
-  const reset = useCallback(() => puzzleManager.reset(), [puzzleManager]);
-  const onTap = useCallback((point: Point2D) => (
-    (puzzleManager.isSolved && currentPuzzle.getValueFromPoint(point) == 0)
-      ? reset()
-      : puzzleManager.tap(point)
-  ), [puzzleManager, reset]);
-  const onKeyDown = useCallback((key: string) => {
-    if (key == " ") reset();
-    const point = keyMap[key.toLowerCase()];
+  const tryToReset = useCallback(() => {
+    if (!isSolving) return void setConfirming(false), puzzleManager.reset();
+    if (!isConfirming) return void setConfirming(true);
+    setConfirming(false);
+    puzzleManager.reset();
+  }, [ isSolving, isConfirming, puzzleManager ]);
+
+  const onTap = useCallback((point: Point2D) => {
+    if (puzzleManager.isSolved && currentPuzzle.getValueFromPoint(point) == 0) {
+      setConfirming(false);
+      tryToReset();
+    } else {
+      puzzleManager.tap(point);
+    }
+  }, [ puzzleManager, tryToReset ]);
+
+  useOnKeyDown((event: KeyboardEvent) => {
+    const key = event.key.toLowerCase();
+    if (key == " ") tryToReset();
+    const point = keyMap[key];
     if (Array.isArray(point)) onTap(point);
-  }, [onTap]);
+  }, [ onTap ]);
 
   useEffect(() => {
     defineOnGlobal({ puzzleManager, forceUpdate });
   }, []);
-
-  useEffect(() => {
-    document.addEventListener("keydown", ({ key }) => onKeyDown(key));
-  }, [onKeyDown]);
 
   const pieces = puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => (
     <Piece hidden={number == 0 && !isSolved} correct={isCorrect} coord={coord} key={number}>
@@ -54,7 +62,7 @@ export function FifteenPuzzleRenderer() {
   ));
 
   return (
-    <div className={styles.fifteenPuzzleRenderer}
+    <div className={join(styles.fifteenPuzzleRenderer)}
          style={{ "--columns": columns, "--rows": rows } as CSSProperties}>
       { pieces }
       <div className={styles.tapListeners} aria-hidden>
