@@ -1,7 +1,6 @@
 export function _switch<T>(value: T) {
   return new Switch(value);
 }
-_switch.name = "switch";
 
 class Switch<T> {
   private cases: {
