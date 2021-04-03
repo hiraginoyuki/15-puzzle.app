@@ -9,6 +9,7 @@ export class PuzzleManager extends EventEmitter {
   }
 
   public isSolved = false;
+  public isSolving = false;
   public games: Game[] = [];
   public get current(): Game {
     return this.games[this.games.length - 1];
@@ -17,14 +18,16 @@ export class PuzzleManager extends EventEmitter {
   public new(...args: MinimalGameData[0]): this {
     this.games.push(Game.generateRandom(...args));
     this.isSolved = this.current.isSolved();
+    this.isSolving = false;
     this.emit("update");
     return this;
   }
   public tap(coord: Vec2) {
     if (this.isSolved) return false;
     const tapSucceeded = this.current.tap(coord);
-    if (tapSucceeded) this.emit("update");
     if (this.isSolved = this.current.isSolved()) this.emit("solve");
+    this.isSolving = !this.isSolved;
+    if (tapSucceeded) this.emit("update");
     return tapSucceeded;
   }
 

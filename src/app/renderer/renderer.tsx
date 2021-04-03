@@ -15,30 +15,36 @@ export function FifteenPuzzleRenderer() {
   } as { [key: string]: Vec2 });
 
   const forceUpdate = useForceUpdate();
+  const [ isConfirming, setConfirming ] = useState(false);
   const [ size, setSize ] = useState<Vec2>([4, 4]);
-  const puzzleManager = useMemo(() => new PuzzleManager().new(...size).on("update", forceUpdate), []);
+
+  const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...size), [size]);
   const { columns, rows, pointUtil } = puzzleManager.current;
-  const { isSolved } = puzzleManager;
+  const { isSolving, isSolved } = puzzleManager;
+
+  const reset = useCallback(() => puzzleManager.new(...size), [size]);
+  const tryToReset = useCallback(() => {
+    if (!isSolving) return void setConfirming(false), reset();
+    if (!isConfirming) return void setConfirming(true);
+    setConfirming(false);
+    reset();
+  }, [ isSolving, isConfirming, reset ]);
 
   const tap = useCallback(async (coord: Vec2) =>
     puzzleManager.isSolved && equals(coord, size.map(c => c - 1) as Vec2)
-    ? puzzleManager.new(...size)
-    : puzzleManager.tap(coord), [puzzleManager, size]);
+    ? tryToReset()
+    : puzzleManager.tap(coord), [puzzleManager, tryToReset]);
   const onKeyDown = useCallback((key: string) => {
-    if (key == " ") puzzleManager.new(...size);
+    if (key == " ") tryToReset();
     const point = keyMap.current[key.toLowerCase()];
     if (Array.isArray(point)) tap(point);
-  }, [tap, size]);
+  }, [ tap, tryToReset ]);
+
   const onKeyDownRef = useRef(onKeyDown);
+  useEffect(() => { onKeyDownRef.current = onKeyDown; }, [onKeyDown]);
+  useEffect(() => { document.addEventListener("keydown", ({ key }: KeyboardEvent) => onKeyDownRef.current(key)); }, []);
 
-  useEffect(() => {
-    onKeyDownRef.current = onKeyDown;
-  }, [onKeyDown]);
-  useEffect(() => {
-    document.addEventListener("keydown", ({ key }: KeyboardEvent) => onKeyDownRef.current(key));
-  }, []);
-
-  defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap })
+  defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
 
   return (
     <div style={{ "--columns": columns, "--rows": rows } as CSSProperties}
