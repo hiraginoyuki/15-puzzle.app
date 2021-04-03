@@ -9,5 +9,6 @@ export * from './join-class-names';
 export * from './range';
 // export * as Mapper from "./mapper";
 // export * from './mapper';
+export * from './switch';
 export * from './use-force-update';
-export * from './use-onkeydown';
+export * from './validator';

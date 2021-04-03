@@ -1,72 +1,70 @@
-import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range, useOnKeyDown } from '../../utils';
+import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'; 
+import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
 import styles from './renderer.scss';
-import { PuzzleManager } from '../../puzzle-manager';
-
-type Point2D = [number, number];
-
-const keyMap = {
-  4:[0,0], 5:[1,0], 6:[2,0], 7:[3,0],
-  r:[0,1], t:[1,1], y:[2,1], u:[3,1],
-  f:[0,2], g:[1,2], h:[2,2], j:[3,2],
-  v:[0,3], b:[1,3], n:[2,3], m:[3,3],
-} as { [key: string]: Point2D };
+import { PuzzleManager, Vec2 } from '../../puzzle-manager';
 
 const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
+const equals = (p1: Vec2, p2: Vec2) => p1[0] === p2[0] && p1[1] === p2[1];
 
 export function FifteenPuzzleRenderer() {
+  const keyMap = useRef({
+    4:[0,0], 5:[1,0], 6:[2,0], 7:[3,0],
+    r:[0,1], t:[1,1], y:[2,1], u:[3,1],
+    f:[0,2], g:[1,2], h:[2,2], j:[3,2],
+    v:[0,3], b:[1,3], n:[2,3], m:[3,3],
+  } as { [key: string]: Vec2 });
+
   const forceUpdate = useForceUpdate();
   const [ isConfirming, setConfirming ] = useState(false);
-  const puzzleManager = useMemo(() => new PuzzleManager(forceUpdate), []);
-  const { isSolving, isSolved, currentPuzzle } = puzzleManager;
-  const { columns, rows, pointUtil } = currentPuzzle;
+  const [ size, setSize ] = useState<Vec2>([4, 4]);
 
+  const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...size), [size]);
+  const { columns, rows, pointUtil } = puzzleManager.current;
+  const { isSolving, isSolved } = puzzleManager;
+
+  const reset = useCallback(() => puzzleManager.new(...size), [size]);
   const tryToReset = useCallback(() => {
-    if (!isSolving) return void setConfirming(false), puzzleManager.reset();
+    if (!isSolving) return void setConfirming(false), reset();
     if (!isConfirming) return void setConfirming(true);
     setConfirming(false);
-    puzzleManager.reset();
-  }, [ isSolving, isConfirming, puzzleManager ]);
+    reset();
+  }, [ isSolving, isConfirming, reset ]);
 
-  const onTap = useCallback((point: Point2D) => {
-    if (puzzleManager.isSolved && currentPuzzle.getValueFromPoint(point) == 0) {
-      setConfirming(false);
-      tryToReset();
-    } else {
-      puzzleManager.tap(point);
-    }
-  }, [ puzzleManager, tryToReset ]);
-
-  useOnKeyDown((event: KeyboardEvent) => {
-    const key = event.key.toLowerCase();
+  const tap = useCallback(async (coord: Vec2) =>
+    puzzleManager.isSolved && equals(coord, size.map(c => c - 1) as Vec2)
+    ? tryToReset()
+    : puzzleManager.tap(coord), [puzzleManager, tryToReset]);
+  const onKeyDown = useCallback((key: string) => {
     if (key == " ") tryToReset();
-    const point = keyMap[key];
-    if (Array.isArray(point)) onTap(point);
-  }, [ onTap ]);
+    const point = keyMap.current[key.toLowerCase()];
+    if (Array.isArray(point)) tap(point);
+  }, [ tap, tryToReset ]);
 
-  useEffect(() => {
-    defineOnGlobal({ puzzleManager, forceUpdate });
-  }, []);
+  const onKeyDownRef = useRef(onKeyDown);
+  useEffect(() => { onKeyDownRef.current = onKeyDown; }, [onKeyDown]);
+  useEffect(() => { document.addEventListener("keydown", ({ key }: KeyboardEvent) => onKeyDownRef.current(key)); }, []);
 
-  const pieces = puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => (
-    <Piece hidden={number == 0 && !isSolved} correct={isCorrect} coord={coord} key={number}>
-      <div className={styles.content}>
-        { number == 0 ? "R" : number }
-      </div>
-    </Piece>
-  ));
-
-  const listeners = range(columns * rows).map(index => (
-    <div className={styles.listener} key={index}
-         {...{ [TAP_EVENT]: () => onTap(pointUtil.convertIndexToPoint(index))}}></div>
-  ));
+  defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
 
   return (
-    <div className={join(styles.fifteenPuzzleRenderer)}
-         style={{ "--columns": columns, "--rows": rows } as CSSProperties}>
-      { pieces }
+    <div style={{ "--columns": columns, "--rows": rows } as CSSProperties}
+         className={styles.fifteenPuzzleRenderer}>
+      {
+        puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => (
+          <Piece hidden={number == 0 && !isSolved} correct={isCorrect} coord={coord} key={number}>
+            <div className={styles.content}>
+              { number == 0 ? "R" : number }
+            </div>
+          </Piece>
+        ))
+      }
       <div className={styles.tapListeners} aria-hidden>
-        { listeners }
+        {
+          range(columns * rows).map(index => (
+            <div {...{ [TAP_EVENT]: () => tap(pointUtil.convertIndexToPoint(index))}}
+                  className={styles.listener} key={index} />
+          ))
+        }
       </div>
     </div>
   );
@@ -75,15 +73,15 @@ export function FifteenPuzzleRenderer() {
 interface PieceProps {
   correct: boolean;
   hidden: boolean;
-  coord: Point2D;
+  coord: Vec2;
 }
 function Piece(props: PropsWithChildren<PieceProps>) {
   const [x, y] = props.coord;
   return (
-    <div className={join(styles.piece,
+    <div style={{ "--x": x, "--y": y } as CSSProperties}
+         className={join(styles.piece,
                          props.correct && styles.correct,
-                         props.hidden && styles.hidden)}
-         style={{ "--x": x, "--y": y } as CSSProperties}>
+                         props.hidden && styles.hidden)}>
       { props.children }
     </div>
   );
