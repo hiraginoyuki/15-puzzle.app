@@ -38,18 +38,18 @@ export class Game extends FifteenPuzzle {
   public tap(coord: Vec2) {
     const tapResult = super.tap(coord);
     if (tapResult) {
-      this.taps.push({ time: +new Date - this.timeGenerated, coord });
+      this.taps.push({ time: +new Date() - this.timeGenerated, coord });
     }
     return tapResult;
   }
 
   public _BRANCHLESS_tap(coord: Vec2) {
-    return this.taps.length !== (this.taps.push(...[{ time: +new Date - this.timeGenerated, coord }].slice(+super.tap(coord))), this.taps.length);
+    return this.taps.length !== (this.taps.push(...[{ time: +new Date() - this.timeGenerated, coord }].slice(+super.tap(coord))), this.taps.length);
   }
 
   public static generateRandom(...args: MinimalGameData[0]): Game {
     const { seed, columns, rows } = super.convertArgs(args);
-    return new this(seed, columns, rows, +new Date, []);
+    return new this(seed, columns, rows, +new Date(), []);
   }
 
   public static fromMinimalData(data: MinimalGameData) {
