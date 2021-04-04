@@ -22,12 +22,17 @@ export class Game extends FifteenPuzzle {
     columns: number,
     rows: number,
     public readonly timeGenerated: number,
-    public timeStarted: number | null,
-    public timeSolved: number | null,
     public taps: TapData[] = [],
   ) {
     super([columns, rows], FifteenPuzzle.generateRandom(seed, columns, rows).numbers);
     this.taps.forEach(tap => this.puzzleInstance.tap(tap.coord));
+  }
+
+  public get timeStarted(): number | null {
+    return this.timeGenerated + this.taps[0].time;
+  }
+  public get timeSolved(): number | null {
+    return this.timeGenerated + (this.isSolved() && this.taps[this.taps.length - 1]);
   }
 
   public tap(coord: Vec2) {
