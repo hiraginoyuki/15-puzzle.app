@@ -1,4 +1,4 @@
-import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react'; 
+import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager, Vec2 } from '../../puzzle-manager';
