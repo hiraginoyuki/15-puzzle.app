@@ -5,7 +5,7 @@ export class Validator {
 }
 
 class Expect<T> {
-  public constructor( 
+  public constructor(
     public readonly validator: Validator,
     public readonly value: any
   ) {}
