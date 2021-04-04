@@ -2,8 +2,8 @@
 let disabled = false;
 function onTouchMove(event: TouchEvent) {
   if ((event.target as HTMLElement).classList.contains("allow-scroll")) event.stopPropagation();
-  else event.preventDefault(); 
-} 
+  else event.preventDefault();
+}
 document.addEventListener("touchmove", onTouchMove, { passive: false });
 
 export function disableScroll() { disabled = true; }
