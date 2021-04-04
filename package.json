@@ -14,7 +14,7 @@
     "deploy:build": "webpack",
     "deploy:deploy": "gh-pages -d public"
   },
-  "author": "",
+  "author": "Yuki Hiragino",
   "license": "ISC",
   "dependencies": {
     "15-puzzle": "^3.1.2",
