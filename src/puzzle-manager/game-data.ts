@@ -55,9 +55,8 @@ export class Game extends FifteenPuzzle {
   public static fromMinimalData(data: MinimalGameData) {
     if (!this.validateMinimalData(data)) return null;
     const { seed, columns, rows } = FifteenPuzzle.convertArgs(data[0]);
-    const times = data[1].concat(Array(3 - data[1].length).fill(null)) as [Game["timeGenerated"], Game["timeStarted"], Game["timeSolved"]];
     const taps = (data.slice(2) as MinimalGameData[2][]).map(([ time, coord ]) => ({ time, coord }));
-    return new Game(seed, columns, rows, times[0], taps);
+    return new Game(seed, columns, rows, data[1][0], taps);
   }
   public static toMinimalData(data: Game): MinimalGameData {
     return [
