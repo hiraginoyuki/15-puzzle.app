@@ -22,12 +22,17 @@ export class Game extends FifteenPuzzle {
     columns: number,
     rows: number,
     public readonly timeGenerated: number,
-    public timeStarted: number | null,
-    public timeSolved: number | null,
     public taps: TapData[] = [],
   ) {
     super([columns, rows], FifteenPuzzle.generateRandom(seed, columns, rows).numbers);
     this.taps.forEach(tap => this.puzzleInstance.tap(tap.coord));
+  }
+
+  public get timeStarted(): number | null {
+    return this.timeGenerated + this.taps[0].time;
+  }
+  public get timeSolved(): number | null {
+    return this.timeGenerated + (this.isSolved() && this.taps[this.taps.length - 1] as any);
   }
 
   public tap(coord: Vec2) {
@@ -44,16 +49,14 @@ export class Game extends FifteenPuzzle {
 
   public static generateRandom(...args: MinimalGameData[0]): Game {
     const { seed, columns, rows } = super.convertArgs(args);
-    return new this(seed, columns, rows, +new Date(), null, null, []);
+    return new this(seed, columns, rows, +new Date(), []);
   }
 
   public static fromMinimalData(data: MinimalGameData) {
     if (!this.validateMinimalData(data)) return null;
     const { seed, columns, rows } = FifteenPuzzle.convertArgs(data[0]);
-    const times = data[1].concat(Array(3 - data[1].length).fill(null)) as [Game["timeGenerated"], Game["timeStarted"], Game["timeSolved"]];
     const taps = (data.slice(2) as MinimalGameData[2][]).map(([ time, coord ]) => ({ time, coord }));
-    //@ts-ignore
-    return new Game(seed, columns, rows, ...times, taps);
+    return new Game(seed, columns, rows, data[1][0], taps);
   }
   public static toMinimalData(data: Game): MinimalGameData {
     return [
