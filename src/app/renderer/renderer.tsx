@@ -48,7 +48,9 @@ export function FifteenPuzzleRenderer() {
   defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
 
   useAnimationFrame(() => {
-    d(timerRef.current as HTMLDivElement).innerText = format((+new Date - puzzleManager.current.timeGenerated) / 1000, 3);
+    const { timeStarted, timeSolved } = puzzleManager.current;
+    const time = puzzleManager.isSolved ? timeSolved! - timeStarted! : timeStarted !== null ? +new Date - timeStarted! : 0;
+    d(timerRef.current as HTMLDivElement).innerText = format(time / 1000, 3);
   }, []);
 
   return <>
