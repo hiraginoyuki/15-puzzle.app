@@ -33,7 +33,7 @@ export function FifteenPuzzleRenderer() {
   const tap = useCallback(async (coord: Vec2) =>
     puzzleManager.isSolved && equals(coord, size.map(c => c - 1) as Vec2)
     ? tryToReset()
-    : puzzleManager.tap(coord), [puzzleManager, tryToReset]);
+    : puzzleManager.tap(coord), [puzzleManager, tryToReset, size]);
   const onKeyDown = useCallback((key: string) => {
     if (key == " ") tryToReset();
     const point = keyMap.current[key.toLowerCase()];
