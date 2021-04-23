@@ -1,5 +1,5 @@
 import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
+import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range, useAnimationFrame, d, format } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager, Vec2 } from '../../puzzle-manager';
 
@@ -17,6 +17,7 @@ export function FifteenPuzzleRenderer() {
   const forceUpdate = useForceUpdate();
   const [ isConfirming, setConfirming ] = useState(false);
   const [ size, setSize ] = useState<Vec2>([4, 4]);
+  const timerRef = useRef<HTMLDivElement>(null);
 
   const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...size), [size]);
   const { columns, rows, pointUtil } = puzzleManager.current;
@@ -46,7 +47,14 @@ export function FifteenPuzzleRenderer() {
 
   defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
 
-  return (
+  useAnimationFrame(() => {
+    const { timeStarted, timeSolved } = puzzleManager.current;
+    const time = puzzleManager.isSolved ? timeSolved! - timeStarted! : timeStarted !== null ? +new Date - timeStarted! : 0;
+    d(timerRef.current as HTMLDivElement).innerText = format(time / 1000, 3);
+  }, []);
+
+  return <>
+    <div ref={timerRef} />
     <div style={{ "--columns": columns, "--rows": rows } as CSSProperties}
          className={styles.fifteenPuzzleRenderer}>
       {
@@ -67,7 +75,7 @@ export function FifteenPuzzleRenderer() {
         }
       </div>
     </div>
-  );
+  </>;
 }
 
 interface PieceProps {

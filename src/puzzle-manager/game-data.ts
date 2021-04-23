@@ -29,10 +29,10 @@ export class Game extends FifteenPuzzle {
   }
 
   public get timeStarted(): number | null {
-    return this.timeGenerated + this.taps[0].time;
+    return this.taps.length === 0 ? null : this.timeGenerated + this.taps[0].time;
   }
   public get timeSolved(): number | null {
-    return this.timeGenerated + (this.isSolved() && this.taps[this.taps.length - 1] as any);
+    return this.isSolved() ? this.timeGenerated + this.taps[this.taps.length - 1].time : null;
   }
 
   public tap(coord: Vec2) {
