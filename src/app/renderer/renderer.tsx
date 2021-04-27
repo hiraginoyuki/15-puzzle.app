@@ -1,10 +1,19 @@
 import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
 import styles from './renderer.scss';
-import { PuzzleManager, Vec2 } from '../../puzzle-manager';
+import { Game, PuzzleManager, Vec2 } from '../../puzzle-manager';
 
 const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 const equals = (p1: Vec2, p2: Vec2) => p1[0] === p2[0] && p1[1] === p2[1];
+const getTime = (game: Game) => (game.timeSolved as number) - (game.timeStarted as number);
+
+function formatTime(unixTimestamp: number) {
+  let totalMiliSeconds = Math.floor(unixTimestamp);
+  const minutes = Math.floor(totalMiliSeconds / 60e3);
+  const seconds = Math.floor(totalMiliSeconds % 60e3 / 1e3);
+  const miliSeconds = totalMiliSeconds % 1e3;
+  return `${String(minutes).padStart(2, "0")}\:${String(seconds).padStart(2, "0")}\.${String(miliSeconds).padStart(3, "0")}`;
+}
 
 export function FifteenPuzzleRenderer() {
   const keyMap = useRef({
@@ -46,9 +55,10 @@ export function FifteenPuzzleRenderer() {
 
   defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
 
-  return (
+  return <>
     <div style={{ "--columns": columns, "--rows": rows } as CSSProperties}
-         className={styles.fifteenPuzzleRenderer}>
+        className={styles.fifteenPuzzleRenderer}>
+
       {
         puzzleManager.getNumbers().map(({ coord, number, isCorrect }) => (
           <Piece hidden={number == 0 && !isSolved} correct={isCorrect} coord={coord} key={number}>
@@ -67,7 +77,21 @@ export function FifteenPuzzleRenderer() {
         }
       </div>
     </div>
-  );
+
+    <ul>
+      {puzzleManager.games
+        .filter(game => game.isSolved())
+        .sort((g1, g2) => getTime(g1) - getTime(g2))
+        .filter((g, i) => i < 10)
+        .map((game, i) => (
+          <li style={{listStyleType: "decimal"}}>
+            {formatTime(getTime(game))}
+          </li>
+        ))
+      }
+    </ul>
+
+  </>;
 }
 
 interface PieceProps {
