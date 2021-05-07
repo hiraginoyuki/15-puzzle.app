@@ -38,7 +38,7 @@ export function FifteenPuzzleRenderer() {
       const result = puzzleManager.tap(coord);
       if (result) setConfirming(false);
     }
-  }, [ puzzleManager, tryToReset, size ]);
+  }, [ puzzleManager, tryToReset ]);
 
   useKeydown(document, ({ key }) => {
     if (key == " ") tryToReset();
