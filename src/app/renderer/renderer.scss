@@ -12,7 +12,7 @@
     position: absolute;
     width: calc(var(--piece-size) * (1 - var(--margin)));
     height: calc(var(--piece-size) * (1 - var(--margin)));
-    margin: calc(var(--piece-size) * var(--margin));
+    margin: calc(var(--piece-size) * var(--margin) / 2);
     transform: translate( calc(var(--piece-size) * var(--x)), calc(var(--piece-size) * var(--y)) );
     border-radius: calc(var(--piece-size) / 16);
     background-color: #111;
