@@ -4,7 +4,7 @@
   width: calc(var(--piece-size) * var(--columns));
   height: calc(var(--piece-size) * var(--rows));
 
-  --piece-size: 130px;
+  --piece-size: 80px;
   --margin: 0.05;
 
   > .piece {
