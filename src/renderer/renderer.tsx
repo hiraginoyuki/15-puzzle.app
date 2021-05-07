@@ -1,8 +1,8 @@
 import React, { CSSProperties, PropsWithChildren, useCallback, useMemo, useRef, useState } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
+import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../utils';
 import styles from './renderer.scss';
-import { PuzzleManager, Vec2 } from '../../puzzle-manager';
-import { useKeydown } from '../../use-keydown';
+import { PuzzleManager, Vec2 } from '../puzzle-manager';
+import { useKeydown } from '../use-keydown';
 
 const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 const equals = (p1: Vec2, p2: Vec2) => p1[0] === p2[0] && p1[1] === p2[1];
