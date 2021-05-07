@@ -1,4 +1,4 @@
-export * from './flex-centering-container';
+export * from './flex-center';
 // export * from './array';
 // export * from './computed-state';
 export * from './define-on-global';
