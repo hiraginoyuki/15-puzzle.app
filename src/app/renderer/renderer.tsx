@@ -1,7 +1,8 @@
-import React, { CSSProperties, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { CSSProperties, PropsWithChildren, useCallback, useMemo, useRef, useState } from 'react';
 import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range } from '../../utils';
 import styles from './renderer.scss';
 import { PuzzleManager, Vec2 } from '../../puzzle-manager';
+import { useKeydown } from '../../use-keydown';
 
 const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 const equals = (p1: Vec2, p2: Vec2) => p1[0] === p2[0] && p1[1] === p2[1];
@@ -30,19 +31,20 @@ export function FifteenPuzzleRenderer() {
     reset();
   }, [ isSolving, isConfirming, reset ]);
 
-  const tap = useCallback(async (coord: Vec2) =>
-    puzzleManager.isSolved && equals(coord, size.map(c => c - 1) as Vec2)
-    ? tryToReset()
-    : puzzleManager.tap(coord), [puzzleManager, tryToReset, size]);
-  const onKeyDown = useCallback((key: string) => {
+  const tap = useCallback((coord: Vec2) => {
+    if (puzzleManager.isSolved && equals(coord, puzzleManager.current.size.map(c => c - 1) as Vec2)) {
+      tryToReset();
+    } else {
+      const result = puzzleManager.tap(coord);
+      if (result) setConfirming(false);
+    }
+  }, [ puzzleManager, tryToReset, size ]);
+
+  useKeydown(document, ({ key }) => {
     if (key == " ") tryToReset();
     const point = keyMap.current[key.toLowerCase()];
     if (Array.isArray(point)) tap(point);
-  }, [ tap, tryToReset ]);
-
-  const onKeyDownRef = useRef(onKeyDown);
-  useEffect(() => { onKeyDownRef.current = onKeyDown; }, [onKeyDown]);
-  useEffect(() => { document.addEventListener("keydown", ({ key }: KeyboardEvent) => onKeyDownRef.current(key)); }, []);
+  }, [ tap ]);
 
   defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
 
