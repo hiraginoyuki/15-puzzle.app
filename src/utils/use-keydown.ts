@@ -1,5 +1,5 @@
 import { useEffect, useRef, useCallback } from "react";
-import { useForceUpdate } from "./utils";
+import { useForceUpdate } from "./use-force-update";
 
 export function useKeydown(target: EventTarget, callback: (event: KeyboardEvent) => any, deps?: React.DependencyList): void {
   const keydownRef = useRef(callback);
