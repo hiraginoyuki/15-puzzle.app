@@ -28,6 +28,9 @@ export class Game extends FifteenPuzzle {
     this.taps.forEach(tap => this.puzzleInstance.tap(tap.coord));
   }
 
+  public get size(): [number, number] {
+    return [this.columns, this.rows];
+  }
   public get timeStarted(): number | null {
     return this.taps.length === 0 ? null : this.timeGenerated + this.taps[0].time;
   }

@@ -1,21 +1,20 @@
 .fifteenPuzzleRenderer {
   user-select: none;
   -webkit-user-select: none;
-  width: calc(80px * var(--columns));
-  height: calc(80px * var(--rows));
+  width: calc(var(--piece-size) * var(--columns));
+  height: calc(var(--piece-size) * var(--rows));
 
-  --width: 80px;
-  --height: 80px;
+  --piece-size: 80px;
   --margin: 0.05;
 
   > .piece {
     display: flex;
     position: absolute;
-    width: calc(var(--width) * (1 - var(--margin)));
-    height: calc(var(--height) * (1 - var(--margin)));
-    margin: calc(var(--height) * var(--margin) / 2) calc(var(--width) * var(--margin) / 2);
-    transform: translate( calc(var(--width) * var(--x)), calc(var(--height) * var(--y)) );
-    border-radius: 5px;
+    width: calc(var(--piece-size) * (1 - var(--margin)));
+    height: calc(var(--piece-size) * (1 - var(--margin)));
+    margin: calc(var(--piece-size) * var(--margin) / 2);
+    transform: translate( calc(var(--piece-size) * var(--x)), calc(var(--piece-size) * var(--y)) );
+    border-radius: calc(var(--piece-size) / 16);
     background-color: #111;
     font-weight: 900;
     filter: invert(0%);
@@ -25,7 +24,7 @@
     &.correct { filter: invert(100%); }
     > .content {
       margin: auto;
-      font-size: 28pt;
+      font-size: calc(var(--piece-size) * 9 / 20);
     }
     z-index: 0;
   }
@@ -40,3 +39,4 @@
     }
   }
 }
+
