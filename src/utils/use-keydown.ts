@@ -1,11 +1,9 @@
-import { useEffect, useRef, useCallback } from "react";
-import { useForceUpdate } from "./use-force-update";
+import { DependencyList, useEffect } from "react";
+import { useCallbackRef } from "./use-callback-ref";
 
-export function useKeydown(target: EventTarget, callback: (event: KeyboardEvent) => any, deps?: React.DependencyList): void {
-  const keydownRef = useRef(callback);
-  keydownRef.current = useCallback(callback, deps || []);
+export function useKeydown(target: EventTarget, callback: (event: KeyboardEvent) => any, deps: DependencyList): void {
+  const keydownRef = useCallbackRef(callback, deps);
 
-  useEffect(useForceUpdate(), deps || []);
   useEffect(() => {
     target?.addEventListener("keydown", (event: KeyboardEvent) => keydownRef.current(event));
   }, [ target ]);
