@@ -19,6 +19,7 @@ module.exports = {
     inline: true,
     hot: false,
     port: 8080,
+    host: "0.0.0.0",
     publicPath: resolve(__dirname, './public/'),
     contentBase: [ './src/', './public/', './public/build/' ],
   },
