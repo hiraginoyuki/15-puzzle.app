@@ -8,6 +8,7 @@ export * from './join-class-names';
 export * from './range';
 export * from './switch';
 export * from './use-animation-frame';
+export * from './use-callback-ref';
 export * from './use-force-update';
 export * from './use-keydown';
 export * from './validator';
