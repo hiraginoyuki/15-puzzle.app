@@ -46,10 +46,6 @@ export class Game extends FifteenPuzzle {
     return tapResult;
   }
 
-  public _BRANCHLESS_tap(coord: Vec2) {
-    return this.taps.length !== (this.taps.push(...[{ time: +new Date() - this.timeGenerated, coord }].slice(+super.tap(coord))), this.taps.length);
-  }
-
   public static generateRandom(...args: MinimalGameData[0]): Game {
     const { seed, columns, rows } = super.convertArgs(args);
     return new this(seed, columns, rows, +new Date(), []);
