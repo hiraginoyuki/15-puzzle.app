@@ -20,8 +20,7 @@ export function FifteenPuzzleRenderer() {
   const timerRef = useRef<HTMLDivElement>(null);
 
   const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...size), [size]);
-  const { columns, rows, pointUtil } = puzzleManager.current;
-  const { isSolving, isSolved } = puzzleManager;
+  const { columns, rows, pointUtil, isSolving, isSolved } = puzzleManager.current;
 
   const reset = useCallback(() => puzzleManager.new(...size), [size]);
   const tryToReset = useCallback(() => {

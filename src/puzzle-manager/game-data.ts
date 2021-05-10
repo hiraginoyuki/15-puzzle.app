@@ -26,6 +26,7 @@ export class Game extends FifteenPuzzle {
   ) {
     super([columns, rows], FifteenPuzzle.generateRandom(seed, columns, rows).numbers);
     this.taps.forEach(tap => this.puzzleInstance.tap(tap.coord));
+    this._isSolved = super.isSolved();
   }
 
   public get size(): [number, number] {
@@ -35,13 +36,22 @@ export class Game extends FifteenPuzzle {
     return this.taps.length === 0 ? null : this.timeGenerated + this.taps[0].time;
   }
   public get timeSolved(): number | null {
-    return this.isSolved() ? this.timeGenerated + this.taps[this.taps.length - 1].time : null;
+    return this.isSolved ? this.timeGenerated + this.taps[this.taps.length - 1].time : null;
+  }
+  public get isSolving(): boolean {
+    return this.taps.length !== 0 && !this.isSolved;
+  }
+  private _isSolved: boolean;
+  //@ts-ignore
+  public get isSolved(): boolean {
+    return this._isSolved;
   }
 
   public tap(coord: Vec2) {
     const tapResult = super.tap(coord);
     if (tapResult) {
       this.taps.push({ time: +new Date() - this.timeGenerated, coord });
+      this._isSolved = super.isSolved();
     }
     return tapResult;
   }
