@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useCallbackRef } from "./use-callback-ref";
 
-export function useAnimationFrame(onFrame: (time: number) => any, deps?: React.DependencyList) {
-  const callbackRef = useCallbackRef(onFrame, deps || []);
+export function useAnimationFrame(onFrame: (time: number) => any, deps: React.DependencyList) {
+  const callbackRef = useCallbackRef(onFrame, deps);
 
   useEffect(() => {
     let id: number;

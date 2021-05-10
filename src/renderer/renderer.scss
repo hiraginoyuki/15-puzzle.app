@@ -2,10 +2,15 @@
   user-select: none;
   -webkit-user-select: none;
   width: calc(var(--piece-size) * var(--columns));
-  height: calc(var(--piece-size) * var(--rows));
+  height: calc(var(--piece-size) * var(--rows) + 80px);
 
   --piece-size: 80px;
   --margin: 0.05;
+
+  > .timerCanvas {
+    width: 320px;
+    height: 80px;
+  }
 
   > .piece {
     display: flex;
@@ -32,7 +37,7 @@
   > .tapListeners {
     display: grid;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 80px);
     grid-template-columns: repeat(var(--columns), 1fr);
     > .listener {
       z-index: 1;

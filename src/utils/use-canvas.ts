@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
-import { useAnimationFrame } from "./use-animation-frame";
-
-type Callback = (ctx: HTMLCanvasElement) => void;
-export function useCanvas(init: Callback, onFrame: Callback) {
+import { DependencyList, useEffect, useRef, useState } from "react";
+export function useCanvas(onFrame: (ctx: CanvasRenderingContext2D, time: number) => void, deps: DependencyList, fps: number = 60) {
   const [canvasElement, setCanvasElement] = useState<HTMLCanvasElement>();
+  const ctxRef = useRef<CanvasRenderingContext2D>();
 
   useEffect(() => {
-    if (canvasElement) init(canvasElement);
+    if (!canvasElement) return;
+    ctxRef.current = canvasElement.getContext("2d")!;
   }, [canvasElement]);
 
-  useAnimationFrame(() => {
-    if (canvasElement) onFrame(canvasElement);
-  }, [canvasElement]);
+  useEffect(() => {
+    if (!canvasElement || !ctxRef.current) return;
+    const id = setInterval(() => {
+      requestAnimationFrame(time => {
+        onFrame(ctxRef.current!, performance.timing.navigationStart + time);
+      });
+    }, 1000 / fps);
+    return () => clearInterval(id);
+  }, [canvasElement, ...deps || []]);
 
   return setCanvasElement as (element: HTMLCanvasElement) => void;
 }
