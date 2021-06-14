@@ -11,7 +11,6 @@ module.exports = {
   output: {
     path: resolve(__dirname, 'public/build'),
     filename: './bundle.js',
-    publicPath: resolve(__dirname, './public/'),
   },
   devServer: {
     writeToDisk: (filePath) => !/.*\.hot-update\..+$/.test(filePath),
@@ -19,7 +18,6 @@ module.exports = {
     hot: false,
     port: 8080,
     host: "0.0.0.0",
-    publicPath: resolve(__dirname, './public/'),
     contentBase: [ './src/', './public/', './public/build/' ],
   },
 
