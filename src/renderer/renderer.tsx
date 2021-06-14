@@ -3,6 +3,7 @@ import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, range
 import styles from './renderer.scss';
 import { Game, PuzzleManager, Vec2 } from '../puzzle-manager';
 import { useCanvas } from '../utils/use-canvas';
+import { useStateRef } from '../utils/use-state-ref';
 
 const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
 const equals = (p1: Vec2, p2: Vec2) => p1[0] === p2[0] && p1[1] === p2[1];
@@ -37,9 +38,9 @@ export function FifteenPuzzleRenderer() {
 
   const forceUpdate = useForceUpdate();
   const [ isConfirming, setConfirming ] = useState(false);
-  const [ size, setSize ] = useState<Vec2>([4, 4]);
+  const sizeRef = useStateRef<Vec2>([4, 4]);
 
-  const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...size), [size]);
+  const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...sizeRef.current), []);
   const { columns, rows, pointUtil, isSolving, isSolved } = puzzleManager.current;
 
   const reset = useCallback(() => puzzleManager.new(...size), [size]);
