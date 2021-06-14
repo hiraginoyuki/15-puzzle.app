@@ -43,7 +43,7 @@ export function FifteenPuzzleRenderer() {
   const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...sizeRef.current), []);
   const { columns, rows, pointUtil, isSolving, isSolved } = puzzleManager.current;
 
-  const reset = useCallback(() => puzzleManager.new(...size), [size]);
+  const reset = useCallback(() => puzzleManager.new(...sizeRef.current), []);
   const tryToReset = useCallback(() => {
     if (!isSolving) return void setConfirming(false), reset();
     if (!isConfirming) return void setConfirming(true);
@@ -66,7 +66,7 @@ export function FifteenPuzzleRenderer() {
     if (Array.isArray(point)) tap(point);
   }, [ tap ]);
 
-  defineOnGlobal({ puzzleManager, forceUpdate, setSize, keyMap });
+  defineOnGlobal({ puzzleManager, forceUpdate, sizeRef, keyMap });
 
   const ref = useCanvas((ctx, time) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
