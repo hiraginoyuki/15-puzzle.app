@@ -19,20 +19,16 @@
   "dependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@types/react-transition-group": "^4.4.0",
     "15-puzzle": "^3.1.2",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-transition-group": "^4.4.0"
+    "react-dom": "^16.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.3.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.2.6",
     "gh-pages": "^1.1.0",
     "npm-run-all": "^4.1.5",
-    "react-refresh": "^0.9.0",
     "sass": "^1.32.10",
     "sass-loader": "^9.0.3",
     "scss-loader": "0.0.1",
