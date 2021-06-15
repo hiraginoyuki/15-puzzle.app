@@ -1,7 +1,7 @@
 import { FifteenPuzzle } from "15-puzzle";
+import { Vec2 } from "15-puzzle/dist/vec2";
 import { Validator, _switch } from "../utils";
 
-export type Vec2 = [number, number];
 export interface TapData {
   time: number;
   coord: Vec2;
@@ -15,71 +15,26 @@ export type MinimalGameData = [
 ];
 
 //@ts-ignore
-export class Game extends FifteenPuzzle {
-  public puzzleInstance: FifteenPuzzle;
-  public constructor(
-    public readonly seed: string,
-    columns: number,
-    rows: number,
-    public readonly timeGenerated: number,
-    public taps: TapData[] = [],
-  ) {
-    super([columns, rows], FifteenPuzzle.generateRandom(seed, columns, rows).numbers);
-    this.taps.forEach(tap => this.puzzleInstance.tap(tap.coord));
-    this._isSolved = super.isSolved();
-  }
-
-  public get size(): [number, number] {
-    return [this.columns, this.rows];
-  }
-  public get timeStarted(): number | null {
-    return this.taps.length === 0 ? null : this.timeGenerated + this.taps[0].time;
-  }
-  public get timeSolved(): number | null {
-    return this.isSolved ? this.timeGenerated + this.taps[this.taps.length - 1].time : null;
-  }
-  public get isSolving(): boolean {
-    return this.taps.length !== 0 && !this.isSolved;
-  }
-  private _isSolved: boolean;
-  //@ts-ignore
-  public get isSolved(): boolean {
-    return this._isSolved;
-  }
-
-  public tap(coord: Vec2) {
-    const tapResult = super.tap(coord);
-    if (tapResult) {
-      this.taps.push({ time: +new Date() - this.timeGenerated, coord });
-      this._isSolved = super.isSolved();
-    }
-    return tapResult;
-  }
-
-  public static generateRandom(...args: MinimalGameData[0]): Game {
-    const { seed, columns, rows } = super.convertArgs(args);
-    return new this(seed, columns, rows, +new Date(), []);
-  }
-
-  public static fromMinimalData(data: MinimalGameData) {
-    if (!this.validateMinimalData(data)) return null;
-    const { seed, columns, rows } = FifteenPuzzle.convertArgs(data[0]);
-    const taps = (data.slice(2) as MinimalGameData[2][]).map(([ time, coord ]) => ({ time, coord }));
-    return new Game(seed, columns, rows, data[1][0], taps);
-  }
-  public static toMinimalData(data: Game): MinimalGameData {
+export class Puzzle extends FifteenPuzzle {
+  // public static fromMinimalData(data: MinimalGameData) {
+  //   if (!this.validateMinimalData(data)) return null;
+  //   const [ seed, columns, rows ] = FifteenPuzzle.convertArgs(data[0]);
+  //   const taps = (data.slice(2) as MinimalGameData[2][]).map(([ time, coord ]) => ({ time, coord }));
+  //   return new Puzzle(seed, columns, rows, data[1][0], taps);
+  // }
+  public static toMinimalData(data: Puzzle): MinimalGameData {
     return [
       [
-        ...data.seed    === ""+data.timeGenerated ? [] : [data.seed],
-        ...data.columns === 4                     ? [] : [data.columns],
-        ...data.rows    === data.columns          ? [] : [data.rows],
+        ...data.seed   === ""+data.timeGenerated ? [] : [data.seed],
+        ...data.width  === 4                     ? [] : [data.width],
+        ...data.height === data.width            ? [] : [data.height],
       ],
       [
         data.timeGenerated,
         ...data.timeStarted === null ? [] : [data.timeStarted],
         ...data.timeSolved  === null ? [] : [data.timeSolved],
       ],
-      ...data.taps.map(tap => [tap.time, tap.coord])
+      ...data.taps ? data.taps.map(tap => [tap.time, tap.x, tap.y]) : []
     ] as MinimalGameData;
   }
 

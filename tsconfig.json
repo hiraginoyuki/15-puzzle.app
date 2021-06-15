@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "outDir": "./public/build",
     "module": "es6",
-    "target": "es5",
+    "target": "es6",
     "lib": ["es2019", "es6", "dom"],
     "jsx": "react"
   }

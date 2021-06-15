@@ -1,2 +1,2 @@
-export * from './game-data';
+export * from './puzzle';
 export * from './puzzle-manager';
