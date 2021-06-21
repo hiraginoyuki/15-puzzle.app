@@ -1,6 +1,5 @@
 import { Puzzle, MinimalGameData } from "./puzzle";
 import { EventEmitter } from 'events';
-import { Vec2 } from "15-puzzle/dist/vec2";
 
 export class PuzzleManager extends EventEmitter {
   public games: Puzzle[] = [];
@@ -13,9 +12,9 @@ export class PuzzleManager extends EventEmitter {
     this.emit("update");
     return this;
   }
-  public tap(coord: Vec2) {
+  public tap(x: number, y: number) {
     if (this.current.isSolved) return false;
-    const tapSucceeded = this.current.tap(...coord as [number, number]);
+    const tapSucceeded = this.current.tap(x, y);
     if (this.current.isSolved) this.emit("solve");
     if (tapSucceeded) this.emit("update");
     return tapSucceeded;

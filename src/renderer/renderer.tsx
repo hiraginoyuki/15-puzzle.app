@@ -56,7 +56,7 @@ export function FifteenPuzzleRenderer() {
     if (puzzle.isSolved && puzzle.getPiece(coord)) {
       tryToReset();
     } else {
-      const result = puzzleManager.tap(coord);
+      const result = puzzleManager.tap(x, y);
       if (result) setConfirming(false);
     }
   }, [ puzzleManager, tryToReset ]);
@@ -64,7 +64,8 @@ export function FifteenPuzzleRenderer() {
   useKeydown(document, ({ key }) => {
     if (key == " ") tryToReset();
     const point = keyMap.current[key.toLowerCase()];
-    if (Array.isArray(point)) tap(new Vec2(...point));
+    //@ts-ignore
+    if (Array.isArray(point)) tap(...point, "keyboard");
   }, [ tap ]);
 
   defineOnGlobal({ puzzleManager, forceUpdate, sizeRef, keyMap });
@@ -103,7 +104,7 @@ export function FifteenPuzzleRenderer() {
       }
       <div className={styles.tapListeners} aria-hidden>
         { useMemo(() => puzzle.in1d.map(piece => (
-            <div {...{ [TAP_EVENT]: () => tap(piece.toVec2())}}
+            <div {...{ [TAP_EVENT]: () => tap(piece.x, piece.y)}}
                   className={styles.listener} key={piece.index} />
           )), [width, height])}
       </div>
