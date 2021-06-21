@@ -1,18 +1,17 @@
 import React, { CSSProperties, useCallback, useMemo, useRef, useState } from 'react';
-import { useForceUpdate, joinClassNames as join, isMobile, defineOnGlobal, useKeydown } from '../utils';
+import { useForceUpdate, joinClassNames as join, defineOnGlobal, useKeydown, range } from '../utils';
 import styles from './renderer.scss';
 import { Puzzle, PuzzleManager } from '../puzzle-manager';
 import { useCanvas } from '../utils/use-canvas';
 import { useStateRef } from '../utils/use-state-ref';
 import { Vec2 } from '15-puzzle/dist/vec2';
-
-const TAP_EVENT = isMobile ? "onTouchStart" : "onMouseDown";
+import { TapData } from '15-puzzle/dist/15-puzzle';
 
 function getSolveTime(puzzle: Puzzle, time: number) {
   if (puzzle.isSolved) {
-    return (puzzle.timeSolved as number) - (puzzle.timeStarted as number)
+    return puzzle.timeSolved! - puzzle.timeStarted!;
   } else if (puzzle.isSolving) {
-    return time - (puzzle.timeStarted as number);
+    return time - puzzle.timeStarted!;
   } else return 0;
 }
 
@@ -42,18 +41,27 @@ export function FifteenPuzzleRenderer() {
 
   const puzzleManager = useMemo(() => new PuzzleManager().on("update", forceUpdate).new(...sizeRef.current as [number, number]), []);
   const puzzle = puzzleManager.current;
-  const { width, height, isSolving } = puzzle;
+  const { width, height } = puzzle;
 
-  const reset = useCallback(() => puzzleManager.new(...sizeRef.current as [number, number]), []);
+  const isMouseDown  = useRef(false);
+  const touchEndFlag = useRef(false);
+  const swipeLock    = useRef(false);
+
+  type TapSource = "mouse-click" | "mouse-swipe" | "touch-tap" | "touch-swipe" | "keyboard";
+  const reset = useCallback(() => {
+    puzzleManager.new(...sizeRef.current as [number, number]);
+    swipeLock.current = true;
+  }, []);
   const tryToReset = useCallback(() => {
-    if (!isSolving) return void setConfirming(false), reset();
+    if (!puzzle.isSolving || puzzle.isSolved) return void setConfirming(false), reset();
     if (!isConfirming) return void setConfirming(true);
     setConfirming(false);
     reset();
-  }, [ isSolving, isConfirming, reset ]);
-
-  const tap = useCallback((coord: Vec2, mouseMove: boolean = false) => {
-    if (puzzle.isSolved && puzzle.getPiece(coord)) {
+  }, [ puzzle, isConfirming, reset ]);
+  const tap = useCallback((x: number, y: number, tapSource: TapSource) => {
+    if (puzzle.isSolved && puzzle[y][x].toVec2().equalTo(new Vec2(puzzle.width - 1, puzzle.height - 1)) && !(
+      tapSource === "touch-swipe" || tapSource === "mouse-swipe"
+    )) {
       tryToReset();
     } else {
       const result = puzzleManager.tap(x, y);
@@ -72,18 +80,36 @@ export function FifteenPuzzleRenderer() {
 
   const ref = useCanvas((ctx, time) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+    const distance = (a: Vec2, b: Vec2) => {
+      const v = a.add(b.mul(-1));
+      return Math.abs(v.x) + Math.abs(v.y);
+    };
+    const taps = puzzle.taps?.length || 0;
+    const moves = (puzzle.taps as any).reduce(
+      ([prevTap, prevCount]: [Vec2, number], tap: TapData) => [new Vec2(tap.x, tap.y), prevCount + distance(prevTap, new Vec2(tap.x, tap.y))],
+      [Puzzle.generateRandom(puzzle.seed).getPiece(0)!.toVec2(), 0]
+    )[1] || 0;
+
+    ctx.fillStyle = `#ffffff${puzzle.isSolved?"f":"b"}f`;
+    ctx.font = "20px 'Roboto Mono'";
+    ctx.fillText(String(taps),  200 - (20 /2 * 43/72) * (String(taps).length),  64);
+    ctx.fillText(String(moves), 120 - (20 /2 * 43/72) * (String(moves).length), 64);
+
     ctx.fillStyle = "#ffffff";
+    const [ms, s] = parseTime(getSolveTime(puzzle, time), [1000]).map(String);
+    ctx.font = "36px 'Roboto Mono'";
+    ctx.fillText(s.padStart(2, "0"), 160 - 5.5 - (36 * 43/72) * Math.max(2, s.length), 32);
+    ctx.font = "24px 'Roboto Mono'";
+    ctx.fillText(ms.padStart(3, "0"), 160 + 6, 32);
+
     ctx.beginPath();
     ctx.ellipse(160, 32, 1.5, 1.5, 0, 0, 360);
     ctx.closePath();
     ctx.fill();
+  }, [puzzle], 30);
 
-    const [ms, s] = parseTime(getSolveTime(puzzle, time), [1000]).map(String);
-    ctx.font = "36px 'Roboto Mono'";
-    ctx.fillText(s.padStart(2, "0"), 160 - 5.5 - (36 * 43 / 72) * Math.max(2, s.length), 32);
-    ctx.font = "24px 'Roboto Mono'";
-    ctx.fillText(ms.padStart(3, "0"), 160 + 6, 32);
-  }, [puzzleManager], 30);
+  const toVec2 = (index: number, width: number) => new Vec2(index % puzzle.width, Math.floor(index / puzzle.width));
 
   return <>
     <div style={{ "--columns": width, "--rows": height } as CSSProperties}
@@ -103,10 +129,37 @@ export function FifteenPuzzleRenderer() {
         ))
       }
       <div className={styles.tapListeners} aria-hidden>
-        { useMemo(() => puzzle.in1d.map(piece => (
-            <div {...{ [TAP_EVENT]: () => tap(piece.x, piece.y)}}
-                  className={styles.listener} key={piece.index} />
-          )), [width, height])}
+        { useMemo(() => range(puzzle.width * puzzle.height)
+          .map(i => toVec2(i, puzzle.width))
+          .map(([x, y], i) => (
+            <div
+              className={styles.listener} key={i} data-index={i}
+              onMouseDown={() => {
+                isMouseDown.current = true;
+                if (touchEndFlag.current) {
+                  touchEndFlag.current = false;
+                  return;
+                }
+                tap(x, y, "mouse-click");
+              }}
+              onMouseMove={() => { if (isMouseDown.current) tap(x, y, "mouse-swipe"); }}
+              onMouseUp={() => { isMouseDown.current = false; }}
+
+              onTouchStart={() => {
+                swipeLock.current = false;
+                tap(x, y, "touch-tap");
+              }}
+              onTouchMove={({ changedTouches: touches }) => {
+                if (swipeLock.current) return;
+                const touch = touches.item(0);
+                const element = document.elementFromPoint(touch.clientX, touch.clientY);
+                const [x, y] = toVec2(+(element as any).dataset.index, width);
+
+                tap(x, y, "touch-swipe");
+              }}
+              onTouchEnd={() => { touchEndFlag.current = true; }}
+            />
+          )), [puzzle])}
       </div>
     </div>
   </>;
