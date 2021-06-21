@@ -2,11 +2,6 @@ import { FifteenPuzzle } from "15-puzzle";
 import { Vec2 } from "15-puzzle/dist/vec2";
 import { Validator, _switch } from "../utils";
 
-export interface TapData {
-  time: number;
-  coord: Vec2;
-}
-
 export type MinimalGameData = [
   //@ts-ignore
   [...([] | [string]), ...([] | [number] | [number, number])], // [seed, columns, rows]
