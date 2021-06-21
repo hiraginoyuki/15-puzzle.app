@@ -19,7 +19,7 @@
   "dependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "15-puzzle": "^5.2.5",
+    "15-puzzle": "^5.2.6",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
