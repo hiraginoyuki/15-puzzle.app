@@ -86,10 +86,10 @@ export function FifteenPuzzleRenderer() {
       return Math.abs(v.x) + Math.abs(v.y);
     };
     const taps = puzzle.taps?.length || 0;
-    const moves = (puzzle.taps as any).reduce(
+    const moves = (puzzle.taps as any)?.reduce(
       ([prevTap, prevCount]: [Vec2, number], tap: TapData) => [new Vec2(tap.x, tap.y), prevCount + distance(prevTap, new Vec2(tap.x, tap.y))],
       [Puzzle.generateRandom(puzzle.seed).getPiece(0)!.toVec2(), 0]
-    )[1] || 0;
+    )?.[1] || 0;
 
     ctx.fillStyle = `#ffffff${puzzle.isSolved?"f":"b"}f`;
     ctx.font = "20px 'Roboto Mono'";
