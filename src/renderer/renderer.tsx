@@ -15,6 +15,13 @@ function getSolveTime(puzzle: Puzzle, time: number) {
   } else return 0;
 }
 
+function fixDigit(number: number, integerDigit: number, decimalDigit: number) {
+  return [
+    String(Math.floor(number)).padStart(integerDigit, "0"),
+    String(Math.round(number % 1 * 10 ** decimalDigit)).padEnd(decimalDigit, "0"),
+  ] as const;
+}
+
 function parseTime(time: number, splitters: number[] = [1000]): number[] {
   time = Math.round(time);
   return splitters
@@ -76,7 +83,9 @@ export function FifteenPuzzleRenderer() {
     if (Array.isArray(point)) tap(...point, "keyboard");
   }, [ tap ]);
 
-  defineOnGlobal({ puzzleManager, forceUpdate, sizeRef, keyMap });
+  const [FPS, setFPS] = useState(30);
+
+  defineOnGlobal({ puzzleManager, forceUpdate, sizeRef, keyMap, FPS, setFPS });
 
   const ref = useCanvas((ctx, time) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -85,29 +94,40 @@ export function FifteenPuzzleRenderer() {
       const v = a.add(b.mul(-1));
       return Math.abs(v.x) + Math.abs(v.y);
     };
+    const solveTime = getSolveTime(puzzle, time);
+    const [ms, s] = parseTime(solveTime, [1000]).map(String);
     const taps = puzzle.taps?.length || 0;
     const moves = (puzzle.taps as any).reduce(
       ([prevTap, prevCount]: [Vec2, number], tap: TapData) => [new Vec2(tap.x, tap.y), prevCount + distance(prevTap, new Vec2(tap.x, tap.y))],
       [Puzzle.generateRandom(puzzle.seed).getPiece(0)!.toVec2(), 0]
     )[1] || 0;
+    const [tps_int, tps_dec] = fixDigit(taps  * 1000 / solveTime || 0, 2, 2);
+    const [mps_int, mps_dec] = fixDigit(moves * 1000 / solveTime || 0, 2, 2);
 
     ctx.fillStyle = `#ffffff${puzzle.isSolved?"f":"b"}f`;
     ctx.font = "20px 'Roboto Mono'";
-    ctx.fillText(String(taps),  200 - (20 /2 * 43/72) * (String(taps).length),  64);
-    ctx.fillText(String(moves), 120 - (20 /2 * 43/72) * (String(moves).length), 64);
+    ctx.fillText(String(taps),   260     - (20 * 43/72) /2 * (String(taps).length),   32);
+    ctx.fillText(String(moves),   60     - (20 * 43/72) /2 * (String(moves).length),  32);
+    ctx.fillText(String(tps_int),260 - 2 - (20 * 43/72)    * (String(tps_int).length),   52);
+    ctx.fillText(String(tps_dec),260 + 2 + (20 * 43/72)    * (String(tps_dec).length-2), 52);
+    ctx.fillText(String(mps_int), 60 - 2 - (20 * 43/72)    * (String(mps_int).length),   52);
+    ctx.fillText(String(mps_dec), 60 + 2 + (20 * 43/72)    * (String(mps_dec).length-2), 52);
 
     ctx.fillStyle = "#ffffff";
-    const [ms, s] = parseTime(getSolveTime(puzzle, time), [1000]).map(String);
     ctx.font = "36px 'Roboto Mono'";
-    ctx.fillText(s.padStart(2, "0"), 160 - 5.5 - (36 * 43/72) * Math.max(2, s.length), 32);
+    ctx.fillText(s.padStart(2, "0"), 160 - 5.5 - (36 * 43/72) * Math.max(2, s.length), 48);
     ctx.font = "24px 'Roboto Mono'";
-    ctx.fillText(ms.padStart(3, "0"), 160 + 6, 32);
+    ctx.fillText(ms.padStart(3, "0"), 160 + 6, 48);
 
     ctx.beginPath();
-    ctx.ellipse(160, 32, 1.5, 1.5, 0, 0, 360);
+    ctx.ellipse( 60, 52, 1.0, 1.0, 0, 0, 360);
+    ctx.closePath();
+    ctx.ellipse(160, 48, 1.5, 1.5, 0, 0, 360);
+    ctx.closePath();
+    ctx.ellipse(260, 52, 1.0, 1.0, 0, 0, 360);
     ctx.closePath();
     ctx.fill();
-  }, [puzzle], 30);
+  }, [puzzle], FPS);
 
   const toVec2 = (index: number, width: number) => new Vec2(index % puzzle.width, Math.floor(index / puzzle.width));
 

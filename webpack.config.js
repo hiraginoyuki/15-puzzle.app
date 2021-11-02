@@ -16,8 +16,9 @@ module.exports = {
     writeToDisk: (filePath) => !/.*\.hot-update\..+$/.test(filePath),
     inline: true,
     hot: false,
-    port: 8080,
+    port: 8083,
     host: "0.0.0.0",
+    disableHostCheck: true,
     contentBase: [ './src/', './public/', './public/build/' ],
   },
 

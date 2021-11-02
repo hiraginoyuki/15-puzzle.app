@@ -16,7 +16,7 @@ export function useCanvas(onFrame: (ctx: CanvasRenderingContext2D, time: number)
       });
     }, 1000 / fps);
     return () => clearInterval(id);
-  }, [canvasElement, ...deps || []]);
+  }, [canvasElement, fps, ...deps || []]);
 
   return setCanvasElement as (element: HTMLCanvasElement) => void;
 }
