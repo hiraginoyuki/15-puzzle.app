@@ -16,7 +16,7 @@
     "deploy:deploy": "gh-pages -d public"
   },
   "author": "Yuki Hiragino",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
