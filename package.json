@@ -2,9 +2,10 @@
   "name": "15-puzzle",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/HiraginoYuki/15-puzzle.app"
+    "url": "https://github.com/HiraginoYuki/webpack.15-puzzle.app"
   },
   "main": "index.js",
   "scripts": {
