@@ -97,10 +97,10 @@ export function FifteenPuzzleRenderer() {
     const solveTime = getSolveTime(puzzle, time);
     const [ms, s] = parseTime(solveTime, [1000]).map(String);
     const taps = puzzle.taps?.length || 0;
-    const moves = (puzzle.taps as any).reduce(
+    const moves = (puzzle.taps as any)?.reduce(
       ([prevTap, prevCount]: [Vec2, number], tap: TapData) => [new Vec2(tap.x, tap.y), prevCount + distance(prevTap, new Vec2(tap.x, tap.y))],
       [Puzzle.generateRandom(puzzle.seed).getPiece(0)!.toVec2(), 0]
-    )[1] || 0;
+    )?.[1] || 0;
     const [tps_int, tps_dec] = fixDigit(taps  * 1000 / solveTime || 0, 2, 2);
     const [mps_int, mps_dec] = fixDigit(moves * 1000 / solveTime || 0, 2, 2);
 
