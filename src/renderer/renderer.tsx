@@ -7,6 +7,10 @@ import { useStateRef } from '../utils/use-state-ref';
 import { Vec2 } from '15-puzzle/dist/vec2';
 import { TapData } from '15-puzzle/dist/15-puzzle';
 
+const CANVAS_WIDTH = 320;
+const CANVAS_HEIGHT = 80;
+const CANVAS_SCALE = 4;
+
 function getSolveTime(puzzle: Puzzle, time: number) {
   if (puzzle.isSolved) {
     return puzzle.timeSolved! - puzzle.timeStarted!;
@@ -88,7 +92,9 @@ export function FifteenPuzzleRenderer() {
   defineOnGlobal({ puzzleManager, forceUpdate, sizeRef, keyMap, FPS, setFPS });
 
   const ref = useCanvas((ctx, time) => {
+    ctx.save()
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.scale(ctx.canvas.width / CANVAS_WIDTH, ctx.canvas.height / CANVAS_HEIGHT)
 
     const distance = (a: Vec2, b: Vec2) => {
       const v = a.add(b.mul(-1));
@@ -127,6 +133,8 @@ export function FifteenPuzzleRenderer() {
     ctx.ellipse(260, 52, 1.0, 1.0, 0, 0, 360);
     ctx.closePath();
     ctx.fill();
+
+    ctx.restore()
   }, [puzzle], FPS);
 
   const toVec2 = (index: number, width: number) => new Vec2(index % puzzle.width, Math.floor(index / puzzle.width));
@@ -134,8 +142,9 @@ export function FifteenPuzzleRenderer() {
   return <>
     <div style={{ "--columns": width, "--rows": height } as CSSProperties}
          className={styles.fifteenPuzzleRenderer}>
-      <canvas className={styles.timerCanvas}
-              width={320} height={80} ref={ref} />
+      <canvas className={styles.timerCanvas} ref={ref}
+              width={CANVAS_WIDTH * CANVAS_SCALE}
+              height={CANVAS_HEIGHT * CANVAS_SCALE} />
       {
         puzzle.in1d.sort((p1, p2) => p1.id - p2.id).map(piece => (
           <div style={{ "--x": piece.x, "--y": piece.y } as CSSProperties}
