@@ -13,13 +13,13 @@ module.exports = {
     filename: './bundle.js',
   },
   devServer: {
-    writeToDisk: (filePath) => !/.*\.hot-update\..+$/.test(filePath),
-    inline: true,
-    hot: false,
-    port: 8083,
+    allowedHosts: '8081.shiina.family',
+    port: 8081,
     host: "0.0.0.0",
-    disableHostCheck: true,
-    contentBase: [ './src/', './public/', './public/build/' ],
+    devMiddleware: {
+      publicPath: '/public/',
+      writeToDisk: true
+    }
   },
 
   externals: {
