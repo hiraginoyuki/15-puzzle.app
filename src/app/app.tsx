@@ -11,7 +11,7 @@ export function App() {
       <FifteenPuzzleRenderer />
     </FlexCenter>
     <div className={styles.credit}>
-      <a href="https://github.com/HiraginoYuki/15-puzzle.app"> Made by Yuki Hiragino </a>
+      <a href="https://github.com/HiraginoYuki/webpack.15-puzzle.app"> Made by Yuki Hiragino </a>
     </div>
   </>;
 }
