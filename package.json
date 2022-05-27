@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/HiraginoYuki/webpack.15-puzzle.app"
+    "url": "https://github.com/hiraginoyuki/webpack.15-puzzle.app"
   },
   "main": "index.js",
   "scripts": {
